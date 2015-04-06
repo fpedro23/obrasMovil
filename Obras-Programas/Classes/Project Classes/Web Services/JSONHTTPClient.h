@@ -18,7 +18,19 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 - (void)performPOSTRequestWithParameters:(NSDictionary *)parameters toServlet:(NSString *)servletName withOptions:(NSString *)option;
-
+- (NSArray *)deserializeDependenciesFromJSON:(NSArray *)impactsJSON;
+- (NSArray *)deserializeWorksFromJSON:(NSArray *)worksJSON;
+- (NSArray *)deserializeProgramsFromJSON:(NSArray *)worksJSON;
+- (NSArray *)deserializeStatesFromJSON:(NSArray *)statesJSON;
+- (NSArray *)deserializeInauguratorsFromJSON:(NSArray *)inauguratorsJSON;
+- (NSArray *)deserializeImpactsFromJSON:(NSArray *)impactsJSON;
+- (NSArray *)deserializeClasificationsFromJSON:(NSArray *)impactsJSON;
+- (NSArray *)deserializeInvesmentsFromJSON:(NSArray *)invesmentsJSON;
+- (NSArray *)deserializeWorksProgramsFromJSON:(NSArray *)typeWorkProgramJSON;
+- (NSArray *)deserializeListReportDependenciesromJSON:(NSArray *)typeWorkProgramJSON;
+- (NSArray *)deserializeListReporteStateFromJSON:(NSArray *)typeWorkProgramJSON;
+- (NSArray *)deserializeListGeneralReporteFromJSON:(NSArray *)typeWorkProgramJSON;
+- (NSArray *)deserializeSubclasificationsFromJSON:(NSArray *)typeWorkProgramJSON;
 @end
 
 @protocol JSONHTTPClientDelegate <NSObject>
@@ -38,5 +50,7 @@
 -(void)JSONHTTPClientDelegate:(JSONHTTPClient *)client didResponseToSubclasifications:(id)response;
 
 -(void)JSONHTTPClientDelegate:(JSONHTTPClient *)client didResponseSearchWorks:(id)response;
+
+
 
 @end

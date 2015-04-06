@@ -36,6 +36,8 @@
 #import "SDWebImageManager.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "Subclasificacion.h"
+#import "AFOAuth2Manager.h"
+
 
 #define METERS_PER_MILE 1609.344
 
@@ -232,7 +234,7 @@
     
     /*  Menu items */
     
-    _menuData           = @[@"Consultas guardadas", @"Registros guardados", @"Ayuda"];
+    _menuData           = @[@"Consultas guardadas", @"Registros guardados", @"Ayuda",@"Cerrar Sesión"];
     _aniosProgramaData  = @[@"2013",@"2014", @"2015", @"2016", @"2017", @"2018"];
     
     _titleFields        = @[@{@"title": @"Estado",     @"sortKey": @"estado.nombreEstado"},
@@ -419,14 +421,66 @@
     _jsonClient = [JSONHTTPClient sharedJSONAPIClient];
     _jsonClient.delegate = self;
     
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletEstados                     withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletInauguradores               withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletImpactos                    withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletConsultarClasificacion      withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletConsultarDependencias       withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletConsultarInversiones        withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:nil toServlet:kServletConsultarTipoObraPrograma   withOptions:nil];
-    [_jsonClient performPOSTRequestWithParameters:@{@"clasificacion": @"1"} toServlet:kServletConsultarSubclasificacion   withOptions:nil];
+    [_jsonClient GET:kServletEstados parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _statesData =[_jsonClient deserializeStatesFromJSON:responseObject];
+
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+    [_jsonClient GET:kServletInauguradores parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _inauguratorData =[_jsonClient deserializeInauguratorsFromJSON:responseObject];
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+    [_jsonClient GET:kServletImpactos parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _impactsData =[_jsonClient deserializeImpactsFromJSON:responseObject];
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+
+    [_jsonClient GET:kServletConsultarClasificacion parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _clasificationsData = [_jsonClient deserializeClasificationsFromJSON:responseObject];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+    
+    [_jsonClient GET:kServletConsultarDependencias parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _dependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+    [_jsonClient GET:kServletConsultarInversiones parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        _invesmentsData =[_jsonClient deserializeInvesmentsFromJSON:responseObject];
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+    [_jsonClient GET:kServletConsultarTipoObraPrograma parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        _worksProgramsData = [_jsonClient deserializeWorksProgramsFromJSON:responseObject];
+        NSLog(@"SUc");
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }];
+    
+
+    /*[_jsonClient performPOSTRequestWithParameters:@{@"clasificacion": @"1"} toServlet:kServletConsultarSubclasificacion   withOptions:nil];*/
 }
 
 #pragma mark - User Interface Customization (View)

@@ -14,9 +14,9 @@
 /******************************************************/
 
 #define kAppBaseProtocol        @"http://"
-#define kAppBaseURL             @"54.69.71.115"
-#define kAppBasePort            @":8080/"
-#define kAppIntranetPath        @"ObrasYProgramasBackend/"
+#define kAppBaseURL             @"192.168.100.7"
+#define kAppBasePort            @":8000/"
+#define kAppIntranetPath        @"obras/api"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath
 
 /////////////       GENERAL
@@ -28,19 +28,23 @@ NSString * const kAppImagenesDependencia =  @"imagenesDependencias/";
 NSString * const kAppImagenesObras       =  @"imagenesObras/";
 
 NSString * const kImageNamePlaceHolder = @"no_image.jpg";
+NSString * const kClientID = @"4y4P7D8w8JkgKPPp8NBYoHESqjXtU7IueNFWk6LG";
+NSString * const kClientSecret = @"ntu7mHezuFj5BPAFgsExi9rlxW5i50mxLfXEk4xojM9f77rE95ekAHKAcmNYlAtSHFoXWtGHEt9IgU0oRtVcfA8vilDUVdHmrB9AUOrd0YTukvGScRQ0c7E6EUyhxDoK";
+NSString * const kStoreCredentialIdentifier = @"usuario";
+
 //              Servlets
 /******************************************************/
 
 NSString * const kServletBuscar                     = @"buscar";
-NSString * const kServletEstados                    = @"consultarEstados";
-NSString * const kServletInauguradores              = @"consultarInauguradores";
-NSString * const kServletImpactos                   = @"consultarImpactos";
+NSString * const kServletEstados                    = @"estados";
+NSString * const kServletInauguradores              = @"inauguradores";
+NSString * const kServletImpactos                   = @"impactos";
 NSString * const kServletPoblacionesObjetivo        = @"consultarPoblacionesObjetivo";
-NSString * const kServletConsultarInversiones       = @"consultarInversiones";
-NSString * const kServletConsultarClasificacion     = @"consultarClasificaciones";
-NSString * const kServletConsultarTipoObraPrograma  = @"consultarTiposDeObraProgramas";
-NSString * const kServletConsultarDependencias      = @"consultarDependencias";
-NSString * const kServletConsultarSubclasificacion  = @"consultarSubclasificacion";
+NSString * const kServletConsultarInversiones       = @"inversiones";
+NSString * const kServletConsultarClasificacion     = @"clasificaciones";
+NSString * const kServletConsultarTipoObraPrograma  = @"tiposDeObra";
+NSString * const kServletConsultarDependencias      = @"dependencias";
+NSString * const kServletConsultarSubclasificacion  = @"clasificaciones";
 
 //              KEYS TO PERSIST DATA
 /******************************************************/
@@ -74,37 +78,37 @@ NSString * const kKeyStoreTodoSublasifications      =  @"kstsb";
 
 //Estado
 
-NSString * const kKeyDbIdEstado                 =  @"idEstado";
+NSString * const kKeyDbIdEstado                 =  @"id";
 NSString * const kKeyDbNombreEstado             =  @"nombreEstado";
 NSString * const kKeyDbLatitud                  =  @"latitud";
 NSString * const kKeyDbLongitud                 =  @"longitud";
 
 //Inaugura
-NSString * const kKeyDbIdCargoInaugura          =  @"idCargoInaugura";
+NSString * const kKeyDbIdCargoInaugura          =  @"id";
 NSString * const kKeyDbNombreCargoInaugura      =  @"nombreCargoInaugura";
 
 
 //Impacto
-NSString * const kKeyDbIdImpacto                =  @"idImpacto";
+NSString * const kKeyDbIdImpacto                =  @"id";
 NSString * const kKeyDbNombreImpacto            =  @"nombreImpacto";
 
 //Clasificación
-NSString * const kKeyDbIdClasificacion          =  @"idTipoClasificacion";
+NSString * const kKeyDbIdClasificacion          =  @"id";
 NSString * const kKeyDbNombreClasificacion      =  @"nombreTipoClasificacion";
 
 //Dependencia
 
-NSString * const kKeyDbIdDependencia            =  @"idDependencia";
+NSString * const kKeyDbIdDependencia            =  @"id";
 NSString * const kKeyDbNombreDependencia        =  @"nombreDependencia";
 
 //Inversion
 
-NSString * const kKeyDbIdTipoInversion          =  @"idTipoInversion";
+NSString * const kKeyDbIdTipoInversion          =  @"id";
 NSString * const kKeyDbNombreTipoInversion      =  @"nombreTipoInversion";
 
 //Tipo Obra Programa
 
-NSString * const kKeyDbIdTipoObra               =  @"idTipoObra";
+NSString * const kKeyDbIdTipoObra               =  @"id";
 NSString * const kKeyDbNombreTipoObra           =  @"nombreTipoObra";
 
 //Obras

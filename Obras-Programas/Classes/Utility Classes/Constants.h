@@ -65,6 +65,9 @@ extern NSString * const kServletConsultarClasificacion;
 extern NSString * const kServletConsultarTipoObraPrograma;
 extern NSString * const kServletConsultarDependencias;
 extern NSString * const kServletConsultarSubclasificacion;
+extern NSString * const kClientID;
+extern NSString * const kClientSecret;
+extern NSString * const kStoreCredentialIdentifier;
 
 /////////////       Options
 /******************************************************/

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8997A3A51AD325C1002F2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3A41AD325C1002F2CCA /* LoginViewController.m */; };
+		8997A3AE1AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3A91AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.m */; };
+		8997A3AF1AD325F9002F2CCA /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3AB1AD325F9002F2CCA /* AFOAuth2Manager.m */; };
+		8997A3B01AD325F9002F2CCA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8997A3AC1AD325F9002F2CCA /* LICENSE */; };
+		8997A3B11AD325F9002F2CCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3AD1AD325F9002F2CCA /* README.md */; };
 		AB02862419F50ADF0053033A /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861019F50ADF0053033A /* MZAppearance.m */; };
 		AB02862519F50ADF0053033A /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861219F50ADF0053033A /* NSInvocation+Copy.m */; };
 		AB02862619F50ADF0053033A /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861419F50ADF0053033A /* MZCustomTransition.m */; };
@@ -45,7 +50,6 @@
 		AB5004A819E20C7F003392E8 /* ObraProgramaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5004A719E20C7F003392E8 /* ObraProgramaCell.m */; };
 		AB8F5A671A078163004E5F4B /* MPMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8F5A661A078163004E5F4B /* MPMovieViewController.m */; };
 		AB8F5A691A07825B004E5F4B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8F5A681A07825B004E5F4B /* MediaPlayer.framework */; };
-		AB8F5A6E1A07835E004E5F4B /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB8F5A6D1A07835E004E5F4B /* video.mp4 */; };
 		AB91254B19D4B68B00151A47 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91254A19D4B68B00151A47 /* Constants.m */; };
 		AB91254E19D4CB1C00151A47 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91254D19D4CB1C00151A47 /* Obra.m */; };
 		AB91255119D4CB2600151A47 /* Programa.m in Sources */ = {isa = PBXBuildFile; fileRef = AB91255019D4CB2600151A47 /* Programa.m */; };
@@ -282,6 +286,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8997A3A31AD325C1002F2CCA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8997A3A41AD325C1002F2CCA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8997A3A81AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
+		8997A3A91AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
+		8997A3AA1AD325F9002F2CCA /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Manager.h; sourceTree = "<group>"; };
+		8997A3AB1AD325F9002F2CCA /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Manager.m; sourceTree = "<group>"; };
+		8997A3AC1AD325F9002F2CCA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8997A3AD1AD325F9002F2CCA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AB02860F19F50ADF0053033A /* MZAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAppearance.h; sourceTree = "<group>"; };
 		AB02861019F50ADF0053033A /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
 		AB02861119F50ADF0053033A /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
@@ -360,7 +372,6 @@
 		AB8F5A651A078163004E5F4B /* MPMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMovieViewController.h; sourceTree = "<group>"; };
 		AB8F5A661A078163004E5F4B /* MPMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMovieViewController.m; sourceTree = "<group>"; };
 		AB8F5A681A07825B004E5F4B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		AB8F5A6D1A07835E004E5F4B /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		AB91254919D4B68B00151A47 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AB91254A19D4B68B00151A47 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		AB91254C19D4CB1C00151A47 /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obra.h; sourceTree = "<group>"; };
@@ -771,6 +782,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8997A3A61AD325F9002F2CCA /* AFOAuth2Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8997A3A71AD325F9002F2CCA /* AFOAuth2Manager */,
+				8997A3AC1AD325F9002F2CCA /* LICENSE */,
+				8997A3AD1AD325F9002F2CCA /* README.md */,
+			);
+			path = AFOAuth2Manager;
+			sourceTree = "<group>";
+		};
+		8997A3A71AD325F9002F2CCA /* AFOAuth2Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8997A3A81AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.h */,
+				8997A3A91AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.m */,
+				8997A3AA1AD325F9002F2CCA /* AFOAuth2Manager.h */,
+				8997A3AB1AD325F9002F2CCA /* AFOAuth2Manager.m */,
+			);
+			path = AFOAuth2Manager;
+			sourceTree = "<group>";
+		};
 		AB02860D19F50ADF0053033A /* MZFormSheetController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1413,6 +1445,7 @@
 		ABFCC48619C2DDA10074CA01 /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8997A3A61AD325F9002F2CCA /* AFOAuth2Manager */,
 				ABBDAA4719F72FFA00290B96 /* MWPhotoBrowser */,
 				ABA8305519F705440032EA3D /* MNMBottomPullToRefresh */,
 				AB02860D19F50ADF0053033A /* MZFormSheetController */,
@@ -1609,6 +1642,8 @@
 				AB02862F19F50B150053033A /* ConsultasGuardadasTableViewController.m */,
 				AB06728B1A074216004A53F1 /* WebViewController.h */,
 				AB06728C1A074216004A53F1 /* WebViewController.m */,
+				8997A3A31AD325C1002F2CCA /* LoginViewController.h */,
+				8997A3A41AD325C1002F2CCA /* LoginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1678,7 +1713,6 @@
 		ABFCC4E119C2DDA10074CA01 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AB8F5A6D1A07835E004E5F4B /* video.mp4 */,
 				AB06728E1A07425B004A53F1 /* manual.pdf */,
 				ABFCC4E219C2DDA10074CA01 /* Data Base */,
 				ABFCC4E319C2DDA10074CA01 /* Images */,
@@ -1824,6 +1858,7 @@
 				ABAC4F2E19E25F48002B15B5 /* MDSpreadViewCornerTopLeft@2x.png in Resources */,
 				ABAC4F2819E25F48002B15B5 /* MDSpreadViewCornerBottomLeftSelected@2x.png in Resources */,
 				EBF594EF19F8BAB90068E51E /* image_1.jpeg in Resources */,
+				8997A3B01AD325F9002F2CCA /* LICENSE in Resources */,
 				ABFCC46519C2DB530074CA01 /* Main.storyboard in Resources */,
 				ABAC4F1A19E25F48002B15B5 /* MDSpreadViewCell@2x.png in Resources */,
 				ABFCC50F19C2DDA10074CA01 /* TSMessagesDefaultDesign.json in Resources */,
@@ -1831,7 +1866,6 @@
 				ABAC4F3019E25F48002B15B5 /* MDSpreadViewCornerTopLeftSelected@2x.png in Resources */,
 				ABFCC50D19C2DDA10074CA01 /* NotificationButtonBackground.png in Resources */,
 				ABFCC50819C2DDA10074CA01 /* NotificationBackgroundSuccessIcon@2x.png in Resources */,
-				AB8F5A6E1A07835E004E5F4B /* video.mp4 in Resources */,
 				ABA8305D19F705440032EA3D /* MNMBottomPullToRefresh.strings in Resources */,
 				ABAC4F3219E25F48002B15B5 /* MDSpreadViewCornerTopRight@2x.png in Resources */,
 				ABFCC50C19C2DDA10074CA01 /* NotificationBackgroundWarningIcon@2x.png in Resources */,
@@ -1968,6 +2002,7 @@
 				ABBDAAD419F72FFA00290B96 /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */,
 				ABBDAAC619F72FFA00290B96 /* NSData+GIF.m in Sources */,
 				ABBDAAAF19F72FFA00290B96 /* MWPhotoBrowser.m in Sources */,
+				8997A3AF1AD325F9002F2CCA /* AFOAuth2Manager.m in Sources */,
 				AB02862919F50ADF0053033A /* MZFormSheetController.m in Sources */,
 				ABBDAAB219F72FFA00290B96 /* MWZoomingScrollView.m in Sources */,
 				ABBDAABE19F72FFA00290B96 /* PSTCollectionViewUpdateItem.m in Sources */,
@@ -2046,6 +2081,7 @@
 				ABFCC4F119C2DDA10074CA01 /* UIButton+AFNetworking.m in Sources */,
 				ABE1584B19E104C80004F691 /* PMThemeEngine.m in Sources */,
 				AB9E738119CBCD5700C16E66 /* UIERealTimeBlurView.m in Sources */,
+				8997A3B11AD325F9002F2CCA /* README.md in Sources */,
 				AB9E738719CBDFDA00C16E66 /* PopupListTableViewController.m in Sources */,
 				ABCDCDA319E8ECA200C6AACC /* Obras-Programas.xcdatamodeld in Sources */,
 				AB02862B19F50ADF0053033A /* MZTransition.m in Sources */,
@@ -2061,12 +2097,14 @@
 				ABCFFFF919D9474D002124B5 /* M13ProgressHUD.m in Sources */,
 				ABBDAAD219F72FFA00290B96 /* UIImage+WebP.m in Sources */,
 				ABBDAABC19F72FFA00290B96 /* PSTCollectionViewItemKey.m in Sources */,
+				8997A3A51AD325C1002F2CCA /* LoginViewController.m in Sources */,
 				ABBDAAD119F72FFA00290B96 /* UIImage+MultiFormat.m in Sources */,
 				ABCDCD4419E7D97B00C6AACC /* QBPopupMenuOverlayView.m in Sources */,
 				ABE1584519E104C80004F691 /* PMCalendarBackgroundView.m in Sources */,
 				ABBDAABD19F72FFA00290B96 /* PSTCollectionViewLayout.m in Sources */,
 				AB36C62C19D6074500B77B83 /* NSArray+MTLManipulationAdditions.m in Sources */,
 				ABBDAACB19F72FFA00290B96 /* SDWebImageDownloader.m in Sources */,
+				8997A3AE1AD325F9002F2CCA /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				ABBDAAB619F72FFA00290B96 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				ABFCC4F519C2DDA10074CA01 /* UIWebView+AFNetworking.m in Sources */,
 				ABCDCD6319E88BDB00C6AACC /* ListaReporteEstado.m in Sources */,

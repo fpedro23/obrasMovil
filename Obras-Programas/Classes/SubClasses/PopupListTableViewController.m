@@ -19,6 +19,7 @@
 #import "DBHelper.h"
 #import "Subclasificacion.h"
 #import "UIColor+Colores.h"
+#import "LoginViewController.h"
 
 typedef NS_OPTIONS(NSInteger, TypeSelection)
 {
@@ -194,6 +195,8 @@ const NSInteger rowHeight = 45;
             cell.imageView.image = [UIImage imageNamed:@"favorito-icon"];
         }else if (indexPath.row == 2){
             cell.imageView.image = [UIImage imageNamed:@"info"];
+        }else if (indexPath.row == 3){
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         cell.textLabel.text = value;
         
@@ -397,6 +400,9 @@ const NSInteger rowHeight = 45;
             [obrasAndProgramsData addObject:@"Tutorial (Video)"];
             option = o_Ayuda;
 
+        }else if (indexPath.row == 3){
+            NSLog(@"Cerrar Sesión");
+            //TODO implementar el cierre de sesión
         }
         
         DetailTableViewController *detailViewController = [[DetailTableViewController alloc]initWithDataSource:obrasAndProgramsData menuOption:option];
