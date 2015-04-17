@@ -14,7 +14,7 @@
 /******************************************************/
 
 #define kAppBaseProtocol        @"http://"
-#define kAppBaseURL             @"192.168.100.7"
+#define kAppBaseURL             @"192.168.100.3"
 #define kAppBasePort            @":8000/"
 #define kAppIntranetPath        @"obras/api"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath
@@ -35,7 +35,7 @@ NSString * const kStoreCredentialIdentifier = @"usuario";
 //              Servlets
 /******************************************************/
 
-NSString * const kServletBuscar                     = @"buscar";
+NSString * const kServletBuscar                     = @"busqueda";
 NSString * const kServletEstados                    = @"estados";
 NSString * const kServletInauguradores              = @"inauguradores";
 NSString * const kServletImpactos                   = @"impactos";
@@ -142,10 +142,10 @@ NSString * const kKeyDbMunicipio                = @"municipio";
 
 //General Response
 
-NSString * const kKeyListaObras                 = @"listaObras";
+NSString * const kKeyListaObras                 = @"obras";
 NSString * const kKeyListaProgramas             = @"listaProgramas";
-NSString * const kKeyListaReporteEstado         = @"listaReporteEstado";
-NSString * const kKeyListaReporteDependencia    = @"listaReporteDependencia";
+NSString * const kKeyListaReporteEstado         = @"reporte_estado";
+NSString * const kKeyListaReporteDependencia    = @"reporte_dependencia";
 NSString * const kKeyListaReporteGeneral        = @"listaReporteGeneral";
 
 //              Parameters Servlet Search

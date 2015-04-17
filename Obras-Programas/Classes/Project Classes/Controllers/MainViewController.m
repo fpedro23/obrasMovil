@@ -472,7 +472,25 @@
     }];
     
     [_jsonClient GET:kServletConsultarTipoObraPrograma parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        _worksProgramsData = [_jsonClient deserializeWorksProgramsFromJSON:responseObject];
+        
+        TipoObraPrograma *obrasTotales = [[TipoObraPrograma alloc]init];
+        obrasTotales.nombreTipoObra = @"OBRAS TOTALES";
+        
+        TipoObraPrograma *programas = [[TipoObraPrograma alloc]init];
+        programas.nombreTipoObra = @"PROGRAMAS";
+        NSArray *works = [_jsonClient deserializeWorksProgramsFromJSON:responseObject];
+        
+        NSMutableArray *worksAndPrograms = [NSMutableArray array];
+        [worksAndPrograms addObject:obrasTotales];
+        
+        for (TipoObraPrograma *obra in works) {
+            [worksAndPrograms addObject:obra];
+        }
+        //[worksAndPrograms addObject:programas];
+        
+        
+        
+        _worksProgramsData = worksAndPrograms;
         NSLog(@"SUc");
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -1046,6 +1064,55 @@ const int numResultsPerPage = 200;
     [parameters setObject:[NSString stringWithFormat:@"%d", numResultsPerPage] forKey:kParamLimiteMax];
     [parameters setObject:[NSString stringWithFormat:@"%d", _numCurrentPage * numResultsPerPage]  forKey:kParamLimiteMin];
     if (_isFromMainQuery)[kAppDelegate showActivityIndicator:M13ProgressViewActionNone whithMessage:kHUDMsgLoading delay:0];
+    
+    [_jsonClient GET:kServletBuscar parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        
+        //Resultado de las obras
+        NSArray *JSONListaObras = responseObject[kKeyListaObras];
+        
+        if (!JSONListaObras) {
+            JSONListaObras = responseObject[kKeyListaProgramas];
+            JSONListaObras = [_jsonClient deserializeProgramsFromJSON:JSONListaObras];
+            
+        }else{
+            JSONListaObras = [_jsonClient deserializeWorksFromJSON:JSONListaObras];
+        }
+        
+        //Resultado de listaReporteGeneral
+        
+        NSArray *JSONListaReporteGeneral= responseObject[kKeyListaReporteGeneral];
+        
+        JSONListaReporteGeneral = [_jsonClient deserializeListGeneralReporteFromJSON:JSONListaReporteGeneral];
+        
+        //Resultado listaReporteEstado
+        
+        NSArray *JSONListaReporteEstados = responseObject[kKeyListaReporteEstado];
+        JSONListaReporteEstados = [_jsonClient deserializeListReporteStateFromJSON:JSONListaReporteEstados];
+        
+        //Resultado listaReporteDependencia
+        
+        NSArray *JSONListaReporteDepedencia = responseObject[kKeyListaReporteDependencia];
+        JSONListaReporteDepedencia = [_jsonClient deserializeListReportDependenciesromJSON:JSONListaReporteDepedencia];
+        
+        NSDictionary *response = @{kKeyListaObras                : JSONListaObras,
+                                   kKeyListaReporteDependencia   : JSONListaReporteDepedencia,
+                                   kKeyListaReporteEstado        : JSONListaReporteEstados,
+                                   kKeyListaReporteGeneral       : JSONListaReporteGeneral};
+        
+        [self JSONHTTPClientDelegate:nil didResponseSearchWorks:response];
+
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Failure");
+    }];
+    
+    
+
+    
+
+    
+    
     [_jsonClient performPOSTRequestWithParameters:parameters toServlet:kServletBuscar withOptions:@"obras"];
     
     [_searchBar resignFirstResponder];
@@ -1556,6 +1623,8 @@ const int numResultsPerPage = 200;
     }
     
     
+    [parameters setObject:[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken] forKey:@"access_token"];
+    
     return parameters;
 }
 
@@ -1869,8 +1938,8 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = programa.nombrePrograma;
         cell.lblIdObraPrograma.text = programa.idPrograma;
-        cell.lblEstado.text         = programa.estado.nombreEstado;
-        [cell.logoImageView setImageWithURL:programa.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        cell.lblEstado.text         = programa.estado;
+        //[cell.logoImageView setImageWithURL:programa.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
         cell.rightUtilityButtons = [self rightButtons];
@@ -1886,8 +1955,8 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = obra.denominacion;
         cell.lblIdObraPrograma.text = obra.idObra;
-        cell.lblEstado.text         = obra.estado.nombreEstado;
-        [cell.logoImageView setImageWithURL:obra.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        cell.lblEstado.text         = obra.estado;
+        //[cell.logoImageView setImageWithURL:obra.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
         cell.rightUtilityButtons = [self rightButtons];
