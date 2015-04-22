@@ -146,9 +146,13 @@ willDisplayHeaderView : (UIView*) view
             
         }
         else    if(indexPath.row == 8){
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.timeStyle = NSDateFormatterShortStyle;
+            dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+            
             cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
             cell.textLabel.text = @"Última modificación";
-            cell.detailTextLabel.text = [self.obra.fechaModificacion description];
+            cell.detailTextLabel.text = [dateFormatter stringFromDate:self.obra.fechaModificacion];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
         }

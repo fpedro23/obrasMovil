@@ -15,21 +15,24 @@
 
 #define kAppBaseProtocol        @"http://"
 #define kAppBaseURL             @"192.168.100.3"
-#define kAppBasePort            @":8000/"
-#define kAppIntranetPath        @"obras/api"
+#define kAppBasePort            @":8000"
+#define kAppIntranetPath        @"/obras/api"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath
+#define kAppMediaURL            kAppBaseProtocol kAppBaseURL kAppBasePort
 
 /////////////       GENERAL
 /******************************************************/
 
 NSString * const kDbName = @"oyp";
 NSString * const kAppURL = kAppFullURL;
-NSString * const kAppImagenesDependencia =  @"imagenesDependencias/";
+NSString * const kAppURLMedia = kAppMediaURL;
+
+NSString * const kAppImagenesDependencia =  @"/media/";
 NSString * const kAppImagenesObras       =  @"imagenesObras/";
 
 NSString * const kImageNamePlaceHolder = @"no_image.jpg";
-NSString * const kClientID = @"4y4P7D8w8JkgKPPp8NBYoHESqjXtU7IueNFWk6LG";
-NSString * const kClientSecret = @"ntu7mHezuFj5BPAFgsExi9rlxW5i50mxLfXEk4xojM9f77rE95ekAHKAcmNYlAtSHFoXWtGHEt9IgU0oRtVcfA8vilDUVdHmrB9AUOrd0YTukvGScRQ0c7E6EUyhxDoK";
+NSString * const kClientID = @"sA8qBAhdo370F0W1i5KuU4zwFUWn7U304dmoh8Us";
+NSString * const kClientSecret = @"PG9NK1YIzbyNaFifVyrotguigfaeCzcG4055YD1lPjDHobZ26sg5hh1GiF0mQqlcDEsTmUvgkAoFcGaqAvA8Pw51K1ZnMFbxJg7gvuVFSwOIryYpt4sUY9GRTkOLkwAe";
 NSString * const kStoreCredentialIdentifier = @"usuario";
 
 //              Servlets
@@ -113,7 +116,7 @@ NSString * const kKeyDbNombreTipoObra           =  @"nombreTipoObra";
 
 //Obras
 
-NSString * const kKeyDbIdObra                   = @"idObra";
+NSString * const kKeyDbIdObra                   = @"identificador";
 NSString * const kKeyDbDenominacion             = @"denominacion";
 NSString * const kKeyDbTipoObra                 = @"tipoObra";
 NSString * const kKeyDbDependencia              = @"dependencia";
@@ -146,7 +149,7 @@ NSString * const kKeyListaObras                 = @"obras";
 NSString * const kKeyListaProgramas             = @"listaProgramas";
 NSString * const kKeyListaReporteEstado         = @"reporte_estado";
 NSString * const kKeyListaReporteDependencia    = @"reporte_dependencia";
-NSString * const kKeyListaReporteGeneral        = @"listaReporteGeneral";
+NSString * const kKeyListaReporteGeneral        = @"reporte_general";
 
 //              Parameters Servlet Search
 /******************************************************/

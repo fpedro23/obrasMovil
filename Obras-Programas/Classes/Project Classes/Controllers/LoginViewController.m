@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *baseURL = [NSURL URLWithString:@"http://192.168.100.3:8000"];
+    NSURL *baseURL = [NSURL URLWithString:kAppURL];
     self.OAuth2Manager =
     [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
                                     clientID:kClientID

@@ -16,8 +16,8 @@
 {
     // model_property_name : json_field_name
     return @{
-             @"numeroObras"     :@"numeroRegistros",
-             @"totalInvertido"  :@"totalInvertido",
+             @"numeroObras"     :@"numero_obras",
+             @"totalInvertido"  :@"sumatotal",
              @"dependencia"     :@"dependencia"
              };
 }

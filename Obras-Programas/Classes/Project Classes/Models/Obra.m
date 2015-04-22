@@ -98,6 +98,20 @@
     }];
 }
 
+
++ (NSValueTransformer *)fechaModificacionJSONTransformer{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX" ]];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *dateStr) {
+        return [dateFormatter dateFromString:dateStr];
+    } reverseBlock:^(NSDate *date) {
+        return [dateFormatter stringFromDate:date];
+    }];
+}
+
+
 + (NSValueTransformer *)clasificacionesJSONTransformer
 {
     // tell Mantle to populate appActions property with an array of ChoosyAppAction objects

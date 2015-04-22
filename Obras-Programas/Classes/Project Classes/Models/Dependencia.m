@@ -28,7 +28,7 @@
         NSURL *imageURL = nil;
         
         if (![str isEqualToString:@"null"]) {
-            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@%@", kAppURL, kAppImagenesDependencia, str];
+            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@", kAppURLMedia,  str];
             imageURL = [NSURL URLWithString:imageStrURL];
         }
         

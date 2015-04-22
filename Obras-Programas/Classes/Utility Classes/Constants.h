@@ -52,6 +52,8 @@ extern NSString * const kAppURL; //http://desarrollo.smartthinking.com.mx:8080/v
 extern NSString * const kAppImagenesDependencia;
 extern NSString * const kImageNamePlaceHolder;
 extern NSString * const kAppImagenesObras;
+extern NSString * const kAppURLMedia;
+
 /////////////       Server
 /******************************************************/
 

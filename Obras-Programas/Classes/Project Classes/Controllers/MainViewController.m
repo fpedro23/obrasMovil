@@ -1108,13 +1108,6 @@ const int numResultsPerPage = 200;
     }];
     
     
-
-    
-
-    
-    
-    [_jsonClient performPOSTRequestWithParameters:parameters toServlet:kServletBuscar withOptions:@"obras"];
-    
     [_searchBar resignFirstResponder];
     [self.txtRangoMaximo resignFirstResponder];
     [self.txtRangoMinimo resignFirstResponder];
@@ -1938,8 +1931,8 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = programa.nombrePrograma;
         cell.lblIdObraPrograma.text = programa.idPrograma;
-        cell.lblEstado.text         = programa.estado;
-        //[cell.logoImageView setImageWithURL:programa.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        cell.lblEstado.text         = programa.estado.nombreEstado;
+        [cell.logoImageView setImageWithURL:programa.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
         cell.rightUtilityButtons = [self rightButtons];
@@ -1955,8 +1948,8 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = obra.denominacion;
         cell.lblIdObraPrograma.text = obra.idObra;
-        cell.lblEstado.text         = obra.estado;
-        //[cell.logoImageView setImageWithURL:obra.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        cell.lblEstado.text         = obra.estado.nombreEstado;
+        [cell.logoImageView setImageWithURL:obra.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
         cell.rightUtilityButtons = [self rightButtons];
@@ -2333,7 +2326,7 @@ const int numResultsPerPage = 200;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if (_isPrograms || _isProgramsNotification) {
+    /*if (_isPrograms || _isProgramsNotification) {
        Programa *programa =  (Programa *)sender;
         if ([segue.identifier isEqualToString:@"showFichaTecnica"]) {
             FichaTecnicaViewController *fichaTecnicaViewController = segue.destinationViewController;
@@ -2341,14 +2334,14 @@ const int numResultsPerPage = 200;
             fichaTecnicaViewController.inversionesData = _invesmentsData;
             fichaTecnicaViewController.clasificacionesData = _clasificationsData;
         }
-    }else{
+    }else{*/
         if ([segue.identifier isEqualToString:@"showFichaTecnica"]) {
         FichaTecnicaViewController *fichaTecnicaViewController = segue.destinationViewController;
         fichaTecnicaViewController.obra = (Obra *)sender;
         fichaTecnicaViewController.inversionesData = _invesmentsData;
         fichaTecnicaViewController.clasificacionesData = _clasificationsData;
         }
-    }
+    
     
     if ([segue.identifier isEqualToString:@"showGrafica"]) {
             GraficasViewController *graficasViewController = segue.destinationViewController;

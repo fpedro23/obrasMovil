@@ -183,7 +183,7 @@
                     cell.textLabel.text = @"Señalización";
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     
-                    if ([_obra.senalizacion  isEqual: @"1"]) {
+                    if ([_obra.senalizacion  isEqual: @"True"]) {
                         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                     }
                     
