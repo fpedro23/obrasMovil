@@ -70,7 +70,6 @@ willDisplayHeaderView : (UIView*) view
     if(!self.isPrograms){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterFullStyle];
-        NSLog(@"System time: %@", [self.obra.fechaInicio description]);
         
         
         // Configure the cell...
@@ -102,9 +101,6 @@ willDisplayHeaderView : (UIView*) view
         else    if(indexPath.row == 2){
             cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
             cell.textLabel.text = @"Dependencia/Secretaría";
-            
-            
-            
             cell.detailTextLabel.text = self.obra.dependencia.nombreDependencia;
             
         }
@@ -198,7 +194,7 @@ willDisplayHeaderView : (UIView*) view
         else    if(indexPath.row == 3){
             cell =[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
             cell.textLabel.text = @"Estado";
-            cell.detailTextLabel.text = self.programa.estado.nombreEstado;
+            cell.detailTextLabel.text = self.programa.estado;
             
         }
         else    if(indexPath.row == 4){

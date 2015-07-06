@@ -23,6 +23,7 @@
 @property (nonatomic, strong) TipoObraPrograma *tipoObra;
 @property (nonatomic, strong) Dependencia *dependencia;
 @property (nonatomic, strong) Estado *estado;
+@property (nonatomic, strong) NSString *estadoBusqueda;
 @property (nonatomic, strong) Impacto *impacto;
 @property (nonatomic, strong) NSArray *inversiones;
 @property (nonatomic, strong) NSArray *clasificaciones;
@@ -45,6 +46,7 @@
 @property (nonatomic, strong) NSString *poblacionObjetivo;
 @property (nonatomic, strong) NSString *municipio;
 @property (nonatomic, strong) Subclasificacion *subclasificacion;
+@property (nonatomic, strong) NSURL *imagenDependencia;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey;
 

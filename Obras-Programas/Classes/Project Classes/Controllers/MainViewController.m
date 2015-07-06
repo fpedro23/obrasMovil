@@ -1037,7 +1037,7 @@
         _isPrograms = _isProgramsSelected ? YES : NO;
         _tableViewData = [NSMutableArray array];
         [self saveTextFieldParameters];
-        [self perfomQueryWithParameters];
+        [self performQueryWithParameters];
     }else{
         [[[UIAlertView alloc]initWithTitle:@"No se puede relizar la búsqueda"
                                    message:@"Para realizar una búsqueda debes seleccionar un tipo de obra o programa"
@@ -1057,7 +1057,7 @@
 
 const int numResultsPerPage = 200;
 
--(void)perfomQueryWithParameters{
+-(void)performQueryWithParameters{
     
     NSMutableDictionary *parameters = [self buildServletParameters];
     //int limiteMin = _numCurrentPage * numResultsPerPage;
@@ -1067,7 +1067,7 @@ const int numResultsPerPage = 200;
     
     [_jsonClient GET:kServletBuscar parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        
+
         //Resultado de las obras
         NSArray *JSONListaObras = responseObject[kKeyListaObras];
         
@@ -1202,7 +1202,7 @@ const int numResultsPerPage = 200;
     _numCurrentPage ++;
     if (_numCurrentPage < _numTotalPages) {
         _isFromMainQuery = NO;
-        [self perfomQueryWithParameters];
+        [self performQueryWithParameters];
     }else{
         [_pullToRefreshManager tableViewReloadFinished];
     }
@@ -1931,7 +1931,7 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = programa.nombrePrograma;
         cell.lblIdObraPrograma.text = programa.idPrograma;
-        cell.lblEstado.text         = programa.estado.nombreEstado;
+        cell.lblEstado.text         = programa.estadoBusqueda;
         [cell.logoImageView setImageWithURL:programa.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
@@ -1948,8 +1948,8 @@ const int numResultsPerPage = 200;
         ObraProgramaCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.lblDenominacion.text   = obra.denominacion;
         cell.lblIdObraPrograma.text = obra.idObra;
-        cell.lblEstado.text         = obra.estado.nombreEstado;
-        [cell.logoImageView setImageWithURL:obra.dependencia.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        cell.lblEstado.text         = obra.estadoBusqueda;
+        [cell.logoImageView setImageWithURL:obra.imagenDependencia placeholderImage:[UIImage imageNamed:kImageNamePlaceHolder] options:SDWebImageRefreshCached usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         //SWTableViewCel
         
         cell.rightUtilityButtons = [self rightButtons];
@@ -1966,7 +1966,7 @@ const int numResultsPerPage = 200;
     
     id registro = _tableViewData[indexPath.row];
     
-    [self performSegueWithIdentifier:@"showFichaTecnica" sender:registro];
+    [self showFichaTecnica:registro];
 }
 
 - (NSArray *)rightButtons
@@ -2333,13 +2333,15 @@ const int numResultsPerPage = 200;
             fichaTecnicaViewController.programa = programa;
             fichaTecnicaViewController.inversionesData = _invesmentsData;
             fichaTecnicaViewController.clasificacionesData = _clasificationsData;
-        }
+        }®
     }else{*/
         if ([segue.identifier isEqualToString:@"showFichaTecnica"]) {
-        FichaTecnicaViewController *fichaTecnicaViewController = segue.destinationViewController;
-        fichaTecnicaViewController.obra = (Obra *)sender;
-        fichaTecnicaViewController.inversionesData = _invesmentsData;
-        fichaTecnicaViewController.clasificacionesData = _clasificationsData;
+
+            FichaTecnicaViewController *fichaTecnicaViewController = segue.destinationViewController;
+            [fichaTecnicaViewController setObra:(Obra*)sender]            ;
+            fichaTecnicaViewController.inversionesData = _invesmentsData;
+            fichaTecnicaViewController.clasificacionesData = _clasificationsData;
+
         }
     
     
@@ -2352,9 +2354,9 @@ const int numResultsPerPage = 200;
     }
 }
 
--(void)showFichaTecnica:(NSNotification *)notification{
-   
-    id obra = [notification object];
+-(void)showFichaTecnica:(Obra *)obra{
+    __block Obra *obraDest = (Obra*)obra;
+
     
     if ([obra isKindOfClass:[Programa class]]) {
         _isProgramsNotification = YES;
@@ -2362,7 +2364,35 @@ const int numResultsPerPage = 200;
         _isProgramsNotification = NO;
     }
     
-    [self performSegueWithIdentifier:@"showFichaTecnica" sender:obra];
+    
+    
+    NSDictionary *parameters = @{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken],
+                                 @"identificador_unico" : obraDest.idObra,
+                                 
+                                 };
+    
+    _jsonClient = [JSONHTTPClient sharedJSONAPIClient];
+    
+    [_jsonClient GET:kServletBuscarUnico parameters:parameters  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"SUc");
+        
+        NSArray *JSONListaObras = responseObject;
+        
+        
+        JSONListaObras = [_jsonClient deserializeWorksFromJSON:JSONListaObras];
+        obraDest  = [JSONListaObras firstObject];
+        [self performSegueWithIdentifier:@"showFichaTecnica" sender:obraDest];
+
+
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"fail");
+    }
+     
+     ];
+    
+    
+    
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 

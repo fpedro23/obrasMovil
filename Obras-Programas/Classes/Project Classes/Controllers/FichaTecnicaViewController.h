@@ -15,5 +15,7 @@
 @property (nonatomic, strong) NSArray *inversionesData;
 @property (nonatomic, strong) NSArray *clasificacionesData;
 
+- (void)setObra:(Obra *)obra;
+
 
 @end

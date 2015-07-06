@@ -15,6 +15,9 @@
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "Programa.h"
 #import "MWPhotoBrowser.h"
+#import "AFOAuth2Manager.h"
+#import "JSONHTTPClient.h"
+
 
 @interface FichaTecnicaViewController () <MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagenBanner;
@@ -34,6 +37,7 @@
 @property SecondColumnTableViewController *secondColumn;
 @property ThirdColumnTableViewController *thirdColumn;
 @property (strong , nonatomic) IBOutlet UIScrollView *imagesContainer;
+@property (nonatomic, strong) JSONHTTPClient *jsonClient;
 
 @end
 
@@ -46,6 +50,14 @@
 @synthesize thirdColumn = _thirdColumn;
 @synthesize imagesContainer = scrollView;
 
+
+- (void)setObra:(Obra *)obra
+{
+    _obra = obra;
+    if ([self isViewLoaded]) {
+        [self reloadInputViews];
+    }
+}
 
 
 - (void)viewDidLoad {

@@ -43,7 +43,10 @@
              @"inaugurada"              :kKeyDbInaugurada,
              @"poblacionObjetivo"       :kKeyDbPoblacionObjetivo,
              @"municipio"               :kKeyDbMunicipio,
-             @"subclasificacion"        :@"subclasificacion"
+             @"subclasificacion"        :@"subclasificacion",
+             @"imagenDependencia"       :@"dependencia__imagenDependencia",
+             @"estadoBusqueda"          :@"estado__nombreEstado"
+
              };
 }
 
@@ -141,6 +144,23 @@
 
 + (NSValueTransformer *)subclasificacionJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[Subclasificacion class]];
+}
+
++ (NSValueTransformer *)imagenDependenciaJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        NSURL *imageURL = nil;
+        
+        if (![str isEqualToString:@"null"]) {
+            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@", kAppURLMediaBusqueda,  str];
+            imageURL = [NSURL URLWithString:imageStrURL];
+        }
+        
+        return imageURL;
+        
+    } reverseBlock:^(NSDate *date) {
+        return @"";
+    }];
 }
 
 @end

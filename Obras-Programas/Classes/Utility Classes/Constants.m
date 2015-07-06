@@ -14,31 +14,37 @@
 /******************************************************/
 
 #define kAppBaseProtocol        @"http://"
-#define kAppBaseURL             @"192.168.100.3"
-#define kAppBasePort            @":8000"
+#define kAppBaseURL             @"edicomex.com.mx"
+#define kAppBasePort            @":7555"
 #define kAppIntranetPath        @"/obras/api"
+#define kAppMediaPath           @"/media/"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath
-#define kAppMediaURL            kAppBaseProtocol kAppBaseURL kAppBasePort
+#define kAppMediaURLBusqueda            kAppBaseProtocol kAppBaseURL kAppBasePort kAppMediaPath
+#define kAppMediaURL          kAppBaseProtocol kAppBaseURL kAppBasePort
+
 
 /////////////       GENERAL
 /******************************************************/
 
 NSString * const kDbName = @"oyp";
 NSString * const kAppURL = kAppFullURL;
+NSString * const kAppURLMediaBusqueda = kAppMediaURLBusqueda;
 NSString * const kAppURLMedia = kAppMediaURL;
+
 
 NSString * const kAppImagenesDependencia =  @"/media/";
 NSString * const kAppImagenesObras       =  @"imagenesObras/";
 
 NSString * const kImageNamePlaceHolder = @"no_image.jpg";
-NSString * const kClientID = @"sA8qBAhdo370F0W1i5KuU4zwFUWn7U304dmoh8Us";
-NSString * const kClientSecret = @"PG9NK1YIzbyNaFifVyrotguigfaeCzcG4055YD1lPjDHobZ26sg5hh1GiF0mQqlcDEsTmUvgkAoFcGaqAvA8Pw51K1ZnMFbxJg7gvuVFSwOIryYpt4sUY9GRTkOLkwAe";
+NSString * const kClientID = @"nJKmO290WGy5TY4GAmxK23cg8mgTDaYf9bgfE5Mx";
+NSString * const kClientSecret = @"Ito4EuoY5hhWuOynPlOxJkgiAguO2tHpFsIZHgkh6HMjN4gHLsOdbOmHxMitMAdJs9FoJS5lK9DiVIiurS6CeocgCVgKHR6JEBt69HY1nsWXaE1bFA7ZpjNQLbrhlgpf";
 NSString * const kStoreCredentialIdentifier = @"usuario";
 
 //              Servlets
 /******************************************************/
 
 NSString * const kServletBuscar                     = @"busqueda";
+NSString * const kServletBuscarUnico                = @"idUnico";
 NSString * const kServletEstados                    = @"estados";
 NSString * const kServletInauguradores              = @"inauguradores";
 NSString * const kServletImpactos                   = @"impactos";
@@ -116,7 +122,7 @@ NSString * const kKeyDbNombreTipoObra           =  @"nombreTipoObra";
 
 //Obras
 
-NSString * const kKeyDbIdObra                   = @"identificador";
+NSString * const kKeyDbIdObra                   = @"identificador_unico";
 NSString * const kKeyDbDenominacion             = @"denominacion";
 NSString * const kKeyDbTipoObra                 = @"tipoObra";
 NSString * const kKeyDbDependencia              = @"dependencia";

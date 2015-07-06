@@ -53,11 +53,15 @@ extern NSString * const kAppImagenesDependencia;
 extern NSString * const kImageNamePlaceHolder;
 extern NSString * const kAppImagenesObras;
 extern NSString * const kAppURLMedia;
+extern NSString * const kAppURLMediaBusqueda;
+
 
 /////////////       Server
 /******************************************************/
 
 extern NSString * const kServletBuscar;
+extern NSString * const kServletBuscarUnico;
+
 extern NSString * const kServletEstados;
 extern NSString * const kServletInauguradores;
 extern NSString * const kServletImpactos;

@@ -91,7 +91,7 @@
                 cell = [tableView dequeueReusableCellWithIdentifier:@"CellCheck" forIndexPath:indexPath];
                 cell.textLabel.text = @"Inaugurada";
                 cell.accessoryType = UITableViewCellAccessoryNone;
-                if([_obra.inaugurada isEqualToString:@"True"]){
+                if(_obra.inaugurada){
                     [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                 }
             }else
@@ -99,7 +99,7 @@
                     cell = [tableView dequeueReusableCellWithIdentifier:@"CellCheck" forIndexPath:indexPath];
                     cell.textLabel.text = @"Susceptible de inaugurar";
                     cell.accessoryType = UITableViewCellAccessoryNone;
-                    if([_obra.susceptibleInauguracion isEqualToString:@"True"]){
+                    if(_obra.susceptibleInauguracion){
                         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                     }
                 }
