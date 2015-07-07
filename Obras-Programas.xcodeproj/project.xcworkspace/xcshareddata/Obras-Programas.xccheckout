@@ -10,6 +10,8 @@
 	<string>Obras-Programas</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>5F04DC7D953347874BD89A8A70137D34F1FA213D</key>
+		<string>https://bitbucket.org/fpedro23/strv-weather-app.git</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>github.com:squallone/Obras-Programas.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Obras-Programas.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>5F04DC7D953347874BD89A8A70137D34F1FA213D</key>
+		<string>../../..</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5F04DC7D953347874BD89A8A70137D34F1FA213D</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
