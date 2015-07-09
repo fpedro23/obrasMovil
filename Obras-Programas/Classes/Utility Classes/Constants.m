@@ -44,7 +44,7 @@ NSString * const kStoreCredentialIdentifier = @"usuario";
 /******************************************************/
 
 NSString * const kServletBuscar                     = @"busqueda";
-NSString * const kServletBuscarUnico                = @"idUnico";
+NSString * const kServletBuscarUnico                = @"idIpad";
 NSString * const kServletEstados                    = @"estados";
 NSString * const kServletInauguradores              = @"inauguradores";
 NSString * const kServletImpactos                   = @"impactos";
