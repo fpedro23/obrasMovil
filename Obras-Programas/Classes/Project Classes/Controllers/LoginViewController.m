@@ -54,7 +54,6 @@
                                                    password:[_passwordTextField text]
                                                     scope:@"read write"
                                                     success:^(AFOAuthCredential *credential) {
-                                                        NSLog(@"Token: %@", credential.accessToken);
                                                         [AFOAuthCredential storeCredential:credential
                                                                             withIdentifier:kStoreCredentialIdentifier];
                                                         [self performSegueWithIdentifier:@"showViews" sender:sender];

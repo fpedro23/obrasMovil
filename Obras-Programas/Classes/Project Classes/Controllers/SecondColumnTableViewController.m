@@ -72,7 +72,7 @@
             return 3;
         }
         else if(section == CLASIFICACION){
-            return 1;
+            return self.obra.clasificaciones.count;
         }
     }
 
@@ -84,7 +84,7 @@
             return 2;
         }
         else if(section == CLASIFICACION){
-            return 1;
+            return self.obra.clasificaciones.count;
         }
     }
     // Return the number of rows in the section.
@@ -183,75 +183,25 @@
                     cell.textLabel.text = @"Señalización";
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     
-                    if ([_obra.senalizacion  isEqual: @"True"]) {
+                    if (_obra.senalizacion) {
                         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                     }
                     
                 }
             }
-            else if(indexPath.section == CLASIFICACION & indexPath.row==0){
-                cell =  [tableView dequeueReusableCellWithIdentifier:@"ClaisificacionCell" forIndexPath:indexPath];
+            else if(indexPath.section == CLASIFICACION){
+                cell =[tableView dequeueReusableCellWithIdentifier:@"CellClasificacion" forIndexPath:indexPath];
                 
+                Clasificacion *clasificacion = self.obra.clasificaciones[indexPath.row];
                 
-                
-                UIImageView *imagenGobierno = (UIImageView*)[cell.contentView viewWithTag:COMPROMISOGOBIERNO];
-                UIImageView *imagenGuerrero = (UIImageView*)[cell.contentView viewWithTag:PNG];
-                UIImageView *imagenMichoacan = (UIImageView*)[cell.contentView viewWithTag:PM];
-                UIImageView *imagenPNI = (UIImageView*)[cell.contentView viewWithTag:PNI];
-                UIImageView *imagenCNCH = (UIImageView*)[cell.contentView viewWithTag:CNCH];
-                UIImageView *imagenOtros = (UIImageView*)[cell.contentView viewWithTag:OTRACLASIFICACION];
-                UILabel *labelCompromisoGobierno = (UILabel*)[cell.contentView viewWithTag:LABELCOMPROMISOGOBIERNO];
-                
-                labelCompromisoGobierno.text = [NSString stringWithFormat:@"Compromiso De Gobierno: %@", _obra.subclasificacion.nombreSubclasificacion];
-                labelCompromisoGobierno.adjustsFontSizeToFitWidth   = YES;
-                
-                
-                imagenGobierno.hidden =YES;
-                imagenGuerrero.hidden=YES;
-                imagenMichoacan.hidden=YES;
-                imagenPNI.hidden =YES;
-                imagenCNCH.hidden= YES;
-                imagenOtros.hidden=YES;
-                
+                cell.textLabel.text = clasificacion.nombreTipoClasificacion;
+                cell.textLabel.lineBreakMode = NSLineBreakByClipping;
+                cell.textLabel.numberOfLines = 0;
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
 
-                NSMutableArray *items = [[NSMutableArray alloc] init];
-                
-                
-                for (Clasificacion* clasificacion in _clasificacionesData) {
-                    [items addObject:clasificacion.nombreTipoClasificacion];
-                }
-                
-                
-                for (Clasificacion *clasificacion in self.obra.clasificaciones) {
-                    NSString *stringInversion = [clasificacion valueForKey:@"nombreTipoClasificacion"];
-                    int item = [items indexOfObject:stringInversion];
-                    
-                    switch (item) {
-                        case 0:
-                            imagenGobierno.hidden = NO;
-                            break;
-                        case 1:
-                            imagenGuerrero.hidden = NO;
-                            break;
-                        case 2:
-                            imagenMichoacan.hidden = NO;
-                            break;
-                        case 3:
-                            imagenPNI.hidden = NO;
-                            break;
-                        case 4:
-                            imagenCNCH.hidden = NO;
-                            break;
-                        case 5:
-                            imagenOtros.hidden = NO;
-                            break;
-                        default:
-                            break;
-                    }
-                }
+
              }
-            else cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
+
         [cell.detailTextLabel setTextColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
     }else{ //Is program
         if (indexPath.section == INVERSION) {
@@ -376,9 +326,8 @@
     if(!self.isPrograms){
         if (indexPath.section == INVERSION & indexPath.row==0) {
             return 104;
-        }else if(indexPath.section == CLASIFICACION & indexPath.row==0) return 172;
+        }else if(indexPath.section == CLASIFICACION) return 44;
         
-        else return 44;
     }
     else {
         if (indexPath.section == INVERSION) {
@@ -386,8 +335,7 @@
         }else if (indexPath.section == POBLACION){
             return 66;
         }
-        else if(indexPath.section == CLASIFICACION & indexPath.row==0) return 172;
-        else return 44;
+        else if(indexPath.section == CLASIFICACION) return 44;
     }
     return 44;
     
@@ -399,13 +347,13 @@
     // set title of section here
     
     if (section == INVERSION) {
-        return @"Inversion";
+        return @"Tipos de Inversión";
     }
     else if(section == POBLACION){
-        return @"Poblacion";
+        return @"Población";
     }
     else if(section == CLASIFICACION){
-        return @"Clasificacion";
+        return @"Tipos de Clasificación";
     }
     else
         // Return the number of rows in the section.

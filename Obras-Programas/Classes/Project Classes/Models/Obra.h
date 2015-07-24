@@ -34,15 +34,15 @@
 @property (nonatomic, strong) NSDate *fechaTermino;
 @property (nonatomic, strong) NSString *inversionTotal;
 @property (nonatomic, strong) NSString *totalBeneficiarios;
-@property (nonatomic, strong) NSString *senalizacion;
-@property (nonatomic, strong) NSString *susceptibleInauguracion;
+@property  BOOL senalizacion;
+@property  BOOL susceptibleInauguracion;
 @property (nonatomic, strong) NSString *porcentajeAvance;
 @property (nonatomic, strong) NSURL *fotoAntesURL;
 @property (nonatomic, strong) NSURL *fotoDuranteURL;
 @property (nonatomic, strong) NSURL *fotoDespuesURL;
 @property (nonatomic, strong) NSDate *fechaModificacion;
 @property (nonatomic, strong) NSString *tipoMoneda;
-@property (nonatomic, strong) NSString *inaugurada;
+@property  BOOL inaugurada;
 @property (nonatomic, strong) NSString *poblacionObjetivo;
 @property (nonatomic, strong) NSString *municipio;
 @property (nonatomic, strong) Subclasificacion *subclasificacion;

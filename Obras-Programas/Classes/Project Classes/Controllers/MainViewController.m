@@ -422,53 +422,53 @@
     _jsonClient.delegate = self;
     
     [_jsonClient GET:kServletEstados parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _statesData =[_jsonClient deserializeStatesFromJSON:responseObject];
 
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     [_jsonClient GET:kServletInauguradores parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _inauguratorData =[_jsonClient deserializeInauguratorsFromJSON:responseObject];
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     [_jsonClient GET:kServletImpactos parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _impactsData =[_jsonClient deserializeImpactsFromJSON:responseObject];
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
 
     [_jsonClient GET:kServletConsultarClasificacion parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _clasificationsData = [_jsonClient deserializeClasificationsFromJSON:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     
     [_jsonClient GET:kServletConsultarDependencias parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _dependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     [_jsonClient GET:kServletConsultarInversiones parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         _invesmentsData =[_jsonClient deserializeInvesmentsFromJSON:responseObject];
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     [_jsonClient GET:kServletConsultarTipoObraPrograma parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -491,10 +491,10 @@
         
         
         _worksProgramsData = worksAndPrograms;
-        NSLog(@"SUc");
+        
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
 
@@ -1104,7 +1104,7 @@ const int numResultsPerPage = 200;
 
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Failure");
+        NSLog(@"%@",error.localizedDescription);
     }];
     
     
@@ -2374,7 +2374,7 @@ const int numResultsPerPage = 200;
     _jsonClient = [JSONHTTPClient sharedJSONAPIClient];
     
     [_jsonClient GET:kServletBuscarUnico parameters:parameters  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"SUc");
+        
         
         NSArray *JSONListaObras = responseObject;
         
@@ -2386,7 +2386,7 @@ const int numResultsPerPage = 200;
 
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"fail");
+        NSLog(@"%@",error.localizedDescription);
     }
      
      ];

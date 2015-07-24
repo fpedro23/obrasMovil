@@ -14,8 +14,8 @@
 /******************************************************/
 
 #define kAppBaseProtocol        @"http://"
-#define kAppBaseURL             @"edicomex.com.mx"
-#define kAppBasePort            @":7555"
+#define kAppBaseURL             @"192.168.100.5"
+#define kAppBasePort            @":8000"
 #define kAppIntranetPath        @"/obras/api"
 #define kAppMediaPath           @"/media/"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath
@@ -129,7 +129,7 @@ NSString * const kKeyDbDependencia              = @"dependencia";
 NSString * const kKeyDbEstado                   = @"estado";
 NSString * const kKeyDbImpacto                  = @"impacto";
 NSString * const kKeyDbTipoInversion            = @"tipoInversion";
-NSString * const kKeyDbClasificacion            = @"clasificacion";
+NSString * const kKeyDbClasificacion            = @"tipoClasificacion";
 NSString * const kKeyDbInaugurador              = @"inaugurador";
 NSString * const kKeyDbDescripcion              = @"descripcion";
 NSString * const kKeyDbObservaciones            = @"observaciones";
@@ -144,7 +144,7 @@ NSString * const kKeyDbFotoDurante              = @"fotoDurante";
 NSString * const kKeyDbFotoDespues              = @"fotoDespues";
 NSString * const kKeyDbFechaModificacion        = @"fechaModificacion";
 NSString * const kKeyDbTotalBeneficiarios       = @"totalBeneficiarios";
-NSString * const kKeyDbTipoMoneda               = @"tipoMoneda";
+NSString * const kKeyDbTipoMoneda               = @"tipoMoneda.nombreTipoDeMoneda";
 NSString * const kKeyDbInaugurada               = @"inaugurada";
 NSString * const kKeyDbPoblacionObjetivo        = @"poblacionObjetivo";
 NSString * const kKeyDbMunicipio                = @"municipio";
