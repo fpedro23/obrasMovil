@@ -127,11 +127,12 @@
 
 + (NSValueTransformer *)fechaModificacionJSONTransformer{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX" ]];
-    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"es_MX" ]];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
     
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *dateStr) {
-        return [dateFormatter dateFromString:dateStr];
+        NSDate *date = [dateFormatter dateFromString:dateStr];
+        return date;
     } reverseBlock:^(NSDate *date) {
         return [dateFormatter stringFromDate:date];
     }];
