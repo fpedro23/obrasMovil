@@ -56,7 +56,7 @@
         NSURL *imageURL = nil;
         
         if (![str isEqualToString:@"null"]) {
-            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@%@", kAppURL, kAppImagenesObras, str];
+            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@", kAppURLMediaBusqueda, str];
             imageURL = [NSURL URLWithString:imageStrURL];
         }
         
@@ -73,7 +73,7 @@
         NSURL *imageURL = nil;
         
         if (![str isEqualToString:@"null"]) {
-            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@%@", kAppURL, kAppImagenesObras, str];
+            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@", kAppURLMediaBusqueda, str];
             imageURL = [NSURL URLWithString:imageStrURL];
         }
         
@@ -90,7 +90,7 @@
         NSURL *imageURL = nil;
         
         if (![str isEqualToString:@"null"]) {
-            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@%@", kAppURL, kAppImagenesObras, str];
+            NSString *imageStrURL = [NSString stringWithFormat:@"%@%@", kAppURLMediaBusqueda, str];
             imageURL = [NSURL URLWithString:imageStrURL];
         }
         
