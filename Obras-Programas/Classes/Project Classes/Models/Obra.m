@@ -50,6 +50,29 @@
              };
 }
 
+-(BOOL)isInaugurada{
+    return [self.inaugurada boolValue];
+}
+
++ (NSValueTransformer *)inauguradaJSONTransformer {
+//    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *str) {
+        
+        if (str == nil) {
+            return [NSNumber numberWithBool:NO];
+        }
+        else if(![str boolValue]){
+            
+            return [NSNumber numberWithBool:NO];
+        }else
+            return [NSNumber numberWithBool:YES];
+        
+    }reverseBlock:^(NSDate *date) {
+        return @"";
+    }
+    ];
+}
+
 + (NSValueTransformer *)fotoAntesURLJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {

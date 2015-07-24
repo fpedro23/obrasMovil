@@ -42,14 +42,14 @@
 @property (nonatomic, strong) NSURL *fotoDespuesURL;
 @property (nonatomic, strong) NSDate *fechaModificacion;
 @property (nonatomic, strong) NSString *tipoMoneda;
-@property  BOOL inaugurada;
+@property (nonatomic, strong) NSNumber *inaugurada;
 @property (nonatomic, strong) NSString *poblacionObjetivo;
 @property (nonatomic, strong) NSString *municipio;
 @property (nonatomic, strong) Subclasificacion *subclasificacion;
 @property (nonatomic, strong) NSURL *imagenDependencia;
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey;
-
+-(BOOL)isInaugurada;
 
 
 

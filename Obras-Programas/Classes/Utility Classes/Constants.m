@@ -13,9 +13,9 @@
 /////////////       SERVER
 /******************************************************/
 
-#define kAppBaseProtocol        @"https://"
-#define kAppBaseURL             @"obrasapf.mx"
-#define kAppBasePort            @""
+#define kAppBaseProtocol        @"http://"
+#define kAppBaseURL             @"192.168.100.8"
+#define kAppBasePort            @":8000"
 #define kAppIntranetPath        @"/obras/api"
 #define kAppMediaPath           @"/media/"
 #define kAppFullURL             kAppBaseProtocol kAppBaseURL kAppBasePort kAppIntranetPath

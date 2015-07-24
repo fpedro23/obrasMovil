@@ -91,7 +91,7 @@
                 cell = [tableView dequeueReusableCellWithIdentifier:@"CellCheck" forIndexPath:indexPath];
                 cell.textLabel.text = @"Inaugurada";
                 cell.accessoryType = UITableViewCellAccessoryNone;
-                if(_obra.inaugurada){
+                if(_obra.isInaugurada){
                     [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                 }
             }else
