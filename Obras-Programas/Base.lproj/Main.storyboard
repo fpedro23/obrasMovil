@@ -523,11 +523,41 @@
                         <outlet property="txtRangoMinimo" destination="EnD-U2-ktS" id="dky-en-Mo5"/>
                         <segue destination="S5j-CH-Qxb" kind="show" identifier="showFichaTecnica" id="VE4-NM-y3j"/>
                         <segue destination="msg-a6-9aw" kind="presentation" identifier="showWebView" id="qva-xW-amR"/>
+                        <segue destination="bZ2-Wn-OIX" kind="show" identifier="playVideo" id="ECy-Th-1ge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1234" y="-41"/>
+        </scene>
+        <!--Ayuda-->
+        <scene sceneID="vpg-GI-oPs">
+            <objects>
+                <viewController title="Ayuda" id="bZ2-Wn-OIX" customClass="YoutubePlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m2d-Me-XlG"/>
+                        <viewControllerLayoutGuide type="bottom" id="53M-UI-w0q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y8H-vG-eGl">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHO-Ok-CLT" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="playerView" destination="wHO-Ok-CLT" id="8q0-gf-8LV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hL-Ve-wzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841" y="1075"/>
         </scene>
         <!--Login-->
         <scene sceneID="zAI-jH-4zt">
@@ -622,7 +652,7 @@
                         <viewControllerLayoutGuide type="top" id="Pao-gc-ea4"/>
                         <viewControllerLayoutGuide type="bottom" id="Hd3-E2-z6Z"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="Exe-uo-t6b">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="Exe-uo-t6b">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -720,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vG-yF-G4c" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="1226"/>
+            <point key="canvasLocation" x="2641" y="1610"/>
         </scene>
         <!--Charts View Controller-->
         <scene sceneID="2Ik-8R-xSS">

@@ -2457,10 +2457,9 @@ const int numResultsPerPage = 200;
     
 #pragma mark - MPMoviePlayerController
     
-        MPMovieViewController *viewPlayer = [[MPMovieViewController alloc]init];
-        viewPlayer.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:viewPlayer animated:YES completion:Nil];
-        [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [self performSegueWithIdentifier:@"playVideo" sender:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
 }
 
 @end
