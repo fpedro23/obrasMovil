@@ -31,6 +31,7 @@
 - (NSArray *)deserializeListReporteStateFromJSON:(NSArray *)typeWorkProgramJSON;
 - (NSArray *)deserializeListGeneralReporteFromJSON:(NSArray *)typeWorkProgramJSON;
 - (NSArray *)deserializeSubclasificationsFromJSON:(NSArray *)typeWorkProgramJSON;
+- (NSArray *)deserializeListReportSubDependenciesromJSON:(NSArray *)typeWorkProgramJSON;
 @end
 
 @protocol JSONHTTPClientDelegate <NSObject>

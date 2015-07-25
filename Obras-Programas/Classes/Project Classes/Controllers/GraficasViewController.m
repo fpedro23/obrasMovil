@@ -105,13 +105,13 @@
         [diccionarioTotalInvertido setObject:valorInvertido forKey:nombre];
         
     }
-    NSString *valorObrasDependencia;
-    NSString *valorInvertidoDependencia;
+    NSNumber *valorObrasDependencia;
+    NSNumber *valorInvertidoDependencia;
     for(int i=0;i<[_dependenciesReportData count];i++){
         reporteDependencia = [_dependenciesReportData objectAtIndex:i];
         nombre = reporteDependencia.dependencia.nombreDependencia;
-        valorObrasDependencia = [NSString stringWithFormat:@"%@", reporteDependencia.numeroObras];
-        valorInvertidoDependencia = [NSString stringWithFormat:@"%@", reporteDependencia.totalInvertido];
+        valorObrasDependencia = reporteDependencia.numeroObras;
+        valorInvertidoDependencia = reporteDependencia.totalInvertido;
         
         [diccionarioNumeroObrasDependencias setObject:valorObrasDependencia forKey:nombre];
         [diccionarioTotalInvertidoDependencias setObject:valorInvertidoDependencia forKey:nombre];

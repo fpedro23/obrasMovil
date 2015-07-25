@@ -37,6 +37,7 @@
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "Subclasificacion.h"
 #import "AFOAuth2Manager.h"
+#import "ListaReporteSubDependencia.h"
 
 
 #define METERS_PER_MILE 1609.344
@@ -168,6 +169,8 @@
 
 @property (nonatomic, strong) NSMutableArray *stateReportData;
 @property (nonatomic, strong) NSMutableArray *dependenciesReportData;
+@property (nonatomic, strong) NSMutableArray *subDependenciesReportData;
+
 
 #pragma mark - General
 
@@ -853,6 +856,16 @@
     [_spreadView reloadData];
 }
 
+- (IBAction)displayReportBySubDependencia:(id)sender {
+    
+    _titleFields        = @[@{@"title": @"Subdependencia", @"sortKey": @"dependencia.nombreDependencia"},
+                            @{@"title": @"Obras",       @"sortKey": @"numeroObras"},
+                            @{@"title": @"Inversión",   @"sortKey": @"totalInvertido"}];
+    _reportOption = r_subdependency;
+    [_spreadView reloadData];
+}
+
+
 #pragma mark - Clean Parameters
 
 -(void)cleanQueryAndHideHUD:(BOOL)option{
@@ -1095,10 +1108,17 @@ const int numResultsPerPage = 200;
         NSArray *JSONListaReporteDepedencia = responseObject[kKeyListaReporteDependencia];
         JSONListaReporteDepedencia = [_jsonClient deserializeListReportDependenciesromJSON:JSONListaReporteDepedencia];
         
+        //Resultado ListaReporteSubDependencia
+        
+        NSArray *JSONListaReporteSubDependencia = responseObject[kKeyListaReporteSubDependencia];
+        JSONListaReporteSubDependencia = [_jsonClient deserializeListReportSubDependenciesromJSON:JSONListaReporteSubDependencia];
+        
         NSDictionary *response = @{kKeyListaObras                : JSONListaObras,
                                    kKeyListaReporteDependencia   : JSONListaReporteDepedencia,
                                    kKeyListaReporteEstado        : JSONListaReporteEstados,
-                                   kKeyListaReporteGeneral       : JSONListaReporteGeneral};
+                                   kKeyListaReporteGeneral       : JSONListaReporteGeneral,
+                                   kKeyListaReporteSubDependencia : JSONListaReporteSubDependencia,
+                                   };
         
         [self JSONHTTPClientDelegate:nil didResponseSearchWorks:response];
 
@@ -1127,6 +1147,7 @@ const int numResultsPerPage = 200;
     [_tableViewData addObjectsFromArray:results];
     _stateReportData        = objectsResponse[kKeyListaReporteEstado];
     _dependenciesReportData = objectsResponse[kKeyListaReporteDependencia];
+    _subDependenciesReportData = objectsResponse[kKeyListaReporteSubDependencia];
     NSArray *generalData    = objectsResponse[kKeyListaReporteGeneral];
     
     [_tableView reloadData];
@@ -2026,9 +2047,12 @@ const int numResultsPerPage = 200;
     
     if (_reportOption == r_state) {
         return _stateReportData.count;
-    }else{
+    }else if(_reportOption == r_dependency){
         return _dependenciesReportData.count;
-    }
+    }else if(_reportOption == r_subdependency){
+        return _subDependenciesReportData.count;
+    }else return 0;
+    
 }
 
 #pragma mark --- Heights
@@ -2086,10 +2110,28 @@ const int numResultsPerPage = 200;
             cell.textLabel.text =  [NSString stringWithFormat:@"%@", [_currencyFormatter stringFromNumber:reporte.totalInvertido]];
         }
         return cell;
-    }else{
+    }else if(_reportOption == r_dependency){
         static NSString *cellIdentifier = @"Cell2";
         MDSpreadViewCell *cell = [aSpreadView dequeueReusableCellWithIdentifier:cellIdentifier];
         ListaReporteDependencia *reporte = _dependenciesReportData[rowPath.row];
+        
+        if (cell == nil) {
+            cell = [[MDSpreadViewCell alloc] initWithStyle:MDSpreadViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+        }
+        
+        if (columnPath.row == 0) {
+            cell.textLabel.text = reporte.dependencia.nombreDependencia;
+        }else if (columnPath.row == 1){
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", reporte.numeroObras];
+        }else if (columnPath.row == 2){
+            cell.textLabel.text =  [NSString stringWithFormat:@"%@", [_currencyFormatter stringFromNumber:reporte.totalInvertido]];
+        }
+        return cell;
+    }else{
+        static NSString *cellIdentifier = @"Cell2";
+        MDSpreadViewCell *cell = [aSpreadView dequeueReusableCellWithIdentifier:cellIdentifier];
+        ListaReporteSubDependencia *reporte = _subDependenciesReportData[rowPath.row];
         
         if (cell == nil) {
             cell = [[MDSpreadViewCell alloc] initWithStyle:MDSpreadViewCellStyleDefault reuseIdentifier:cellIdentifier];

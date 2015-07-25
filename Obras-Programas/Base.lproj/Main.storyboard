@@ -358,6 +358,20 @@
                                                     <action selector="displayReportByState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BGI-x8-iHK"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekb-mJ-xii">
+                                                <rect key="frame" x="72" y="64" width="120" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Subdependencia">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5.0"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="displayReportBySubDependencia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N27-af-Y0U"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -608,7 +622,7 @@
                         <viewControllerLayoutGuide type="top" id="Pao-gc-ea4"/>
                         <viewControllerLayoutGuide type="bottom" id="Hd3-E2-z6Z"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="Exe-uo-t6b">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="Exe-uo-t6b">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

@@ -156,6 +156,8 @@ NSString * const kKeyListaProgramas             = @"listaProgramas";
 NSString * const kKeyListaReporteEstado         = @"reporte_estado";
 NSString * const kKeyListaReporteDependencia    = @"reporte_dependencia";
 NSString * const kKeyListaReporteGeneral        = @"reporte_general";
+NSString * const kKeyListaReporteSubDependencia = @"reporte_subdependencia";
+
 
 //              Parameters Servlet Search
 /******************************************************/

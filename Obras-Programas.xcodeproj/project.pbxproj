@@ -12,6 +12,7 @@
 		8997A3AF1AD325F9002F2CCA /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3AB1AD325F9002F2CCA /* AFOAuth2Manager.m */; };
 		8997A3B01AD325F9002F2CCA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8997A3AC1AD325F9002F2CCA /* LICENSE */; };
 		8997A3B11AD325F9002F2CCA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3AD1AD325F9002F2CCA /* README.md */; };
+		89FFD6F71B63EBA30033C732 /* ListaReporteSubDependencia.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FFD6F61B63EBA30033C732 /* ListaReporteSubDependencia.m */; };
 		AB02862419F50ADF0053033A /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861019F50ADF0053033A /* MZAppearance.m */; };
 		AB02862519F50ADF0053033A /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861219F50ADF0053033A /* NSInvocation+Copy.m */; };
 		AB02862619F50ADF0053033A /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02861419F50ADF0053033A /* MZCustomTransition.m */; };
@@ -294,6 +295,8 @@
 		8997A3AB1AD325F9002F2CCA /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Manager.m; sourceTree = "<group>"; };
 		8997A3AC1AD325F9002F2CCA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8997A3AD1AD325F9002F2CCA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		89FFD6F51B63EBA30033C732 /* ListaReporteSubDependencia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaReporteSubDependencia.h; sourceTree = "<group>"; };
+		89FFD6F61B63EBA30033C732 /* ListaReporteSubDependencia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaReporteSubDependencia.m; sourceTree = "<group>"; };
 		AB02860F19F50ADF0053033A /* MZAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAppearance.h; sourceTree = "<group>"; };
 		AB02861019F50ADF0053033A /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
 		AB02861119F50ADF0053033A /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
@@ -1303,6 +1306,8 @@
 				ABCDCD5F19E88BDB00C6AACC /* ListaReporteEstado.m */,
 				ABCDCD6019E88BDB00C6AACC /* ListaReporteGeneral.h */,
 				ABCDCD6119E88BDB00C6AACC /* ListaReporteGeneral.m */,
+				89FFD6F51B63EBA30033C732 /* ListaReporteSubDependencia.h */,
+				89FFD6F61B63EBA30033C732 /* ListaReporteSubDependencia.m */,
 			);
 			name = Reportes;
 			sourceTree = "<group>";
@@ -1956,6 +1961,7 @@
 				AB36C62D19D6074500B77B83 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				ABCDCD4119E7D97B00C6AACC /* QBPopupMenu.m in Sources */,
 				AB02863019F50B150053033A /* ConsultasGuardadasTableViewController.m in Sources */,
+				89FFD6F71B63EBA30033C732 /* ListaReporteSubDependencia.m in Sources */,
 				ABCDCD4519E7D97B00C6AACC /* QBPopupMenuPagenatorView.m in Sources */,
 				ABE1582619E075C90004F691 /* UIColor+Colores.m in Sources */,
 				ABBDAAB319F72FFA00290B96 /* DACircularProgressView.m in Sources */,

@@ -42,6 +42,7 @@ typedef NS_OPTIONS(NSInteger, ReportOption)
 {
     r_state = 0,
     r_dependency = 1,
+    r_subdependency = 2,
 };
 
 /////////////       General
@@ -169,6 +170,7 @@ extern NSString * const kKeyListaReporteEstado;
 extern NSString * const kKeyListaProgramas;
 extern NSString * const kKeyListaReporteDependencia;
 extern NSString * const kKeyListaReporteGeneral;
+extern NSString * const kKeyListaReporteSubDependencia;
 
 //              Parameters Servlet Buscar
 /******************************************************/

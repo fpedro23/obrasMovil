@@ -14,6 +14,7 @@
 
 
 @interface ChartsViewController ()
+@property NSNumberFormatter *currencyFormatter;
 
 @end
 
@@ -27,70 +28,83 @@
 @synthesize pieDataSource;
 @synthesize lineView;
 
--(void)prepareColumnChartWithTitle:(NSString *)title{
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
+    
+    //_diccionario = @{@"2012": @{@"CONACYT" : @5.65, @"CONAGUA" : @12.6, @"CFE" : @8.4},
+    //                @"2013": @{@"CONACYT" : @4.35, @"CONAGUA" : @13.2, @"CFE" : @4.6, @"IMSS" : @0.6}};
+    
+    
+    
+    columnDataSource = [[ColumnChartDataSource alloc]initWithData:_diccionario displayReporte:@"totalInvertido"];
+    pieDataSource = [[PieChartDataSource alloc] initWithData:_diccionario displayReporte:@"totalInvertido"];
+    [self prepareBarChartWithTitle:@"totalInvertido"];
+    [self preparePieChartWithTitle:@"totalInvertido"];
+    [self prepareDonutChartWithTitle:@"totalInvertido"];
+    [self prepareColumnChartWithTitle:@"totalInvertido"];
+    [self updateChartsWithTitle:@"totalInvertido"];
 
+    _currencyFormatter = [[NSNumberFormatter alloc] init];
+    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    lineView = [[LineView alloc] init];
+    [lineView setUserInteractionEnabled:NO];
+    [lineView setBackgroundColor:[UIColor clearColor]];
+    [_donutChart addSubview:lineView];
+    
+}
+
+-(void)prepareColumnChartWithTitle:(NSString *)title{
     // Create the chart
     if(!self._chart){
     _chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
     _chart.title = @"Total Invertido por Estado";
-    _chart.autoresizingMask =  ~UIViewAutoresizingNone;
-    _chart.BackgroundColor = [UIColor clearColor];
-    _chart.PlotAreaBackgroundColor = [UIColor clearColor];
-    _chart.CanvasAreaBackgroundColor = [UIColor clearColor];
-    _chart.borderColor = [UIColor blackColor];
-    _chart.gestureDoubleTapResetsZoom = YES;
+    [_chart setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     _chart.hidden = YES;
     _chart.tag = 1;
-    
-    _chart.BorderColor = [UIColor clearColor];
-    
-    _chart.PlotAreaBorderColor = [UIColor clearColor];
-    _chart.PlotAreaBorderThickness = 0.f;
-    
-    // add a pair of axes
+
+        _chart.backgroundColor = [UIColor clearColor];
+        _chart.plotAreaBackgroundColor = [UIColor clearColor];
+        _chart.canvasAreaBackgroundColor = [UIColor clearColor];
+        _chart.gestureDoubleTapResetsZoom = YES;
+        
+        _chart.borderColor = [UIColor clearColor];
+        
+        _chart.plotAreaBorderColor = [UIColor clearColor];
+
+        
+        
     SChartCategoryAxis *xAxis = [[SChartCategoryAxis alloc] init];
-    xAxis.style.interSeriesPadding = @1;
+    xAxis.style.interSeriesPadding = @.2;
     xAxis.enableGesturePanning = YES;
     xAxis.enableGestureZooming = NO;
-    xAxis.style.majorTickStyle.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:10];
-    int max= [[_diccionario valueForKey:title] count];
-    
-    [xAxis setDefaultRange:[[SChartNumberRange alloc] initWithMinimum:@0 andMaximum:[NSNumber numberWithInt:max]]];
-
-        
-    xAxis.style.majorGridLineStyle.lineWidth = @1;
-    //xAxis.style.majorGridLineStyle.lineColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    xAxis.style.majorGridLineStyle.lineColor = [UIColor blackColor];
-    xAxis.style.majorGridLineStyle.showMajorGridLines = YES;
-
-        
-    xAxis.allowPanningOutOfDefaultRange =YES;
+    xAxis.defaultRange = [[SChartNumberRange alloc] initWithMinimum:@.5 andMaximum:@15];
     _chart.xAxis = xAxis;
-    
+
     SChartNumberAxis *yAxis = [[SChartNumberAxis alloc] init];
     yAxis.title = @"Inversion (MDP)";
-    yAxis.rangePaddingHigh = @1.0;
+    yAxis.rangePaddingHigh = @5.0;
     yAxis.enableGestureZooming = YES;
     yAxis.enableGesturePanning = YES;
     yAxis.zoomInLimit = 5;
 
-        
-    yAxis.style.majorGridLineStyle.lineWidth = @1;
-    //xAxis.style.majorGridLineStyle.lineColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    yAxis.style.majorGridLineStyle.lineColor = [UIColor blackColor];
-    yAxis.style.majorGridLineStyle.showMajorGridLines = YES;
-    //[yAxis setRangeWithMinimum:@0 andMaximum:@15];
-    
+//        
+//    yAxis.style.majorGridLineStyle.lineWidth = @1;
+//    yAxis.style.majorGridLineStyle.lineColor = [UIColor blackColor];
+//    yAxis.style.majorGridLineStyle.showMajorGridLines = YES;
+
+
+
     _chart.yAxis = yAxis;
-        
     columnDataSource.reporte = title;
     _chart.datasource = columnDataSource;
-        _chart.delegate = self;
-        _chart.legend.hidden = YES;
+    _chart.delegate = self;
+//        _chart.legend.hidden = YES;
         [self.view addSubview:_chart];
-
+        [_chart redrawChart];
     }
     
 
@@ -107,14 +121,14 @@
         _pieChart.hidden =YES;
         [self updatePieTitle:title];
         _pieChart.autoresizingMask =  ~UIViewAutoresizingNone;
-        _pieChart.BackgroundColor = [UIColor clearColor];
-        _pieChart.PlotAreaBackgroundColor = [UIColor clearColor];
-        _pieChart.CanvasAreaBackgroundColor = [UIColor clearColor];
+        _pieChart.backgroundColor = [UIColor clearColor];
+        _pieChart.plotAreaBackgroundColor = [UIColor clearColor];
+        _pieChart.canvasAreaBackgroundColor = [UIColor clearColor];
         _pieChart.gestureDoubleTapResetsZoom = YES;
-        _pieChart.BorderColor = [UIColor clearColor];
+        _pieChart.borderColor = [UIColor clearColor];
         
-        _pieChart.PlotAreaBorderColor = [UIColor clearColor];
-        _pieChart.PlotAreaBorderThickness = 0.f;
+        _pieChart.plotAreaBorderColor = [UIColor clearColor];
+        _pieChart.plotAreaBorderThickness = 0.f;
         _pieChart.tag =2;
         
         pieDataSource.reporte = title;
@@ -143,15 +157,15 @@
         _donutChart.hidden =YES;
         [self updateDonutTitle:title];
         _donutChart.autoresizingMask =  ~UIViewAutoresizingNone;
-        _donutChart.BackgroundColor = [UIColor clearColor];
-        _donutChart.PlotAreaBackgroundColor = [UIColor clearColor];
-        _donutChart.CanvasAreaBackgroundColor = [UIColor clearColor];
+        _donutChart.backgroundColor = [UIColor clearColor];
+        _donutChart.plotAreaBackgroundColor = [UIColor clearColor];
+        _donutChart.canvasAreaBackgroundColor = [UIColor clearColor];
         _donutChart.gestureDoubleTapResetsZoom = YES;
         
-        _donutChart.BorderColor = [UIColor clearColor];
+        _donutChart.borderColor = [UIColor clearColor];
         
-        _donutChart.PlotAreaBorderColor = [UIColor clearColor];
-        _donutChart.PlotAreaBorderThickness = 0.f;
+        _donutChart.plotAreaBorderColor = [UIColor clearColor];
+        _donutChart.plotAreaBorderThickness = 0.f;
         _donutChart.tag =3;
         pieDataSource.reporte = title;
 
@@ -167,9 +181,6 @@
 
 
 -(void)prepareBarChartWithTitle:(NSString *)title{
-    
-    
-    
     // Create the chart
     if(!self._barChart){
         _barChart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
@@ -177,15 +188,15 @@
         _barChart.hidden =NO;
         [self updateBarTitle:title];
         _barChart.autoresizingMask =  ~UIViewAutoresizingNone;
-        _barChart.BackgroundColor = [UIColor clearColor];
-        _barChart.PlotAreaBackgroundColor = [UIColor clearColor];
-        _barChart.CanvasAreaBackgroundColor = [UIColor clearColor];
+        _barChart.backgroundColor = [UIColor clearColor];
+        _barChart.plotAreaBackgroundColor = [UIColor clearColor];
+        _barChart.canvasAreaBackgroundColor = [UIColor clearColor];
         _barChart.gestureDoubleTapResetsZoom = YES;
         
-        _barChart.BorderColor = [UIColor clearColor];
+        _barChart.borderColor = [UIColor clearColor];
         
-        _barChart.PlotAreaBorderColor = [UIColor clearColor];
-        _barChart.PlotAreaBorderThickness = 0.f;
+        _barChart.plotAreaBorderColor = [UIColor clearColor];
+        _barChart.plotAreaBorderThickness = 0.f;
         _barChart.tag =4;
         
         columnDataSource.reporte = title;
@@ -200,7 +211,7 @@
         xAxis.enableGestureZooming = YES;
         xAxis.zoomInLimit = 5;
         xAxis.title = @"Inversión (MDP)";
-        [xAxis setRangeWithMinimum:@0.5 andMaximum:@15];
+        [xAxis setRangeWithMinimum:@0.5 andMaximum:@30];
         xAxis.rangePaddingHigh = @1.0;
 
         xAxis.style.majorGridLineStyle.lineWidth = @1;
@@ -226,6 +237,7 @@
         _barChart.delegate = self;
         
         [self.view addSubview:_barChart];
+
         
     }
     
@@ -351,27 +363,7 @@
 }
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-    //_diccionario = @{@"2012": @{@"CONACYT" : @5.65, @"CONAGUA" : @12.6, @"CFE" : @8.4},
-     //                @"2013": @{@"CONACYT" : @4.35, @"CONAGUA" : @13.2, @"CFE" : @4.6, @"IMSS" : @0.6}};
 
-    
-
-    columnDataSource = [[ColumnChartDataSource alloc]initWithData:_diccionario displayReporte:@"totalInvertido"];
-    pieDataSource = [[PieChartDataSource alloc] initWithData:_diccionario displayReporte:@"totalInvertido"];
-    [self prepareBarChartWithTitle:@"totalInvertido"];
-    [self preparePieChartWithTitle:@"totalInvertido"];
-    [self prepareDonutChartWithTitle:@"totalInvertido"];
-
-    lineView = [[LineView alloc] init];
-    [lineView setUserInteractionEnabled:NO];
-    [lineView setBackgroundColor:[UIColor clearColor]];
-    [_donutChart addSubview:lineView];
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -399,61 +391,133 @@
 #define EXTRUSION 90
 - (void)sChart:(ShinobiChart *)chart alterLabel:(UILabel *)label forDatapoint:(SChartRadialDataPoint *)datapoint atSliceIndex:(NSInteger)index inRadialSeries:(SChartRadialSeries *)series {
     
-    if (chart == _pieChart) {
-        label.adjustsFontSizeToFitWidth = YES;
-        if (datapoint.value.floatValue < 5.f) {
-            label.text = @"";
-            
-        }  else if (datapoint.value.floatValue < 15.f) {
-            label.adjustsFontSizeToFitWidth = YES;
-            CGRect f = label.frame;
-            f.size.width = 35.f;
-            label.frame = f;
-        }
-    } else
-    if( chart == _donutChart){
+//    if (chart == _pieChart) {
+//        label.adjustsFontSizeToFitWidth = YES;
+//        if (datapoint.value.floatValue < 5.f) {
+//
+//            label.text = @"";
+//            
+//        }  else if (datapoint.value.floatValue < 15.f) {
+//            label.adjustsFontSizeToFitWidth = YES;
+//            CGRect f = label.frame;
+//            f.size.width = 35.f;
+//            label.frame = f;
+//        }
+//    } else
+//    if( chart == _donutChart){
+
         SChartDonutSeries *pieSeries = (SChartDonutSeries *)series;
+        NSNumber *total = [pieSeries.dataSeries.allYValues valueForKeyPath:@"@sum.self"];
         
-        //get our radial point from our datasource method
+        //Determinar el porcentaje
+        NSNumber *porcentaje;
+        NSUInteger numero;
         
-        // three points:
-        CGPoint pieCenter;      // chart center for trig calculations
-        CGPoint oldLabelCenter; // original label center
-        CGPoint labelCenter;    // new label center
-        CGPoint endOfLine;     // we want our line to finish just short of our label
+        numero = pieSeries.dataSeries.allYValues.count;
         
-        pieCenter = [pieSeries getDonutCenter];
-        oldLabelCenter = labelCenter = [pieSeries getSliceCenter:index];
+        porcentaje = numero < 10 ? @5 :
+        numero >= 10 && numero < 20 ? @10 :
+        numero >= 20 && numero < 40 ? @15 : @15
+        ;
         
-        // find the angle of the slice, and add on a little to the label's center
-        float xChange, yChange;
         
-        xChange = pieCenter.x - labelCenter.x;
-        yChange = pieCenter.y - labelCenter.y;
         
-        float angle = atan2f(xChange, yChange) + M_PI / 2.f;
-        // we do the M_PI / 2 adjustment because of how the pie is drawn internally
-        
-        labelCenter.x = oldLabelCenter.x + EXTRUSION * cosf(angle);
-        labelCenter.y = oldLabelCenter.y - EXTRUSION * sinf(angle);
-        
-        endOfLine.x = oldLabelCenter.x + (EXTRUSION-30.f) * cosf(angle);
-        endOfLine.y = oldLabelCenter.y - (EXTRUSION-30.f) * sinf(angle);
-        
-        self.reporteSeleccionado = @"totalInvertido";
+        if(datapoint.value.floatValue/total.floatValue*100>porcentaje.floatValue || datapoint.selected){
+            //get our radial point from our datasource method
+            
+            // three points:
+            CGPoint pieCenter;      // chart center for trig calculations
+            CGPoint oldLabelCenter; // original label center
+            CGPoint labelCenter;    // new label center
+            CGPoint endOfLine;     // we want our line to finish just short of our label
+            
+            pieCenter = [pieSeries getDonutCenter];
+            oldLabelCenter = labelCenter = [pieSeries getSliceCenter:index];
+            
+            // find the angle of the slice, and add on a little to the label's center
+            float xChange, yChange;
+            
+            xChange = pieCenter.x - labelCenter.x;
+            yChange = pieCenter.y - labelCenter.y;
+            
+            float angle = atan2f(xChange, yChange) + M_PI / 2.f;
+            // we do the M_PI / 2 adjustment because of how the pie is drawn internally
+            
+            labelCenter.x = oldLabelCenter.x + EXTRUSION * cosf(angle);
+            labelCenter.y = oldLabelCenter.y - EXTRUSION * sinf(angle);
+            
+            endOfLine.x = oldLabelCenter.x + (EXTRUSION-30.f) * cosf(angle);
+            endOfLine.y = oldLabelCenter.y - (EXTRUSION-30.f) * sinf(angle);
+            
+            
+            if ([self.reporteSeleccionado isEqualToString:@"numeroObras"] || [self.reporteSeleccionado isEqualToString:@"numeroObrasDependencias"]) {
+                [label setText:[NSString stringWithFormat:@"%@, %@ Obras.", datapoint.xValue, datapoint.yValue]];
+            }else{
+                [label setText:[NSString stringWithFormat:@"%@, %@ mdp.", datapoint.xValue, [_currencyFormatter stringFromNumber:datapoint.yValue]]];
+
+            }
+            
+            label.textColor = [UIColor blackColor];
+            [label sizeToFit];
+            [label setCenter:labelCenter]; // this must be after sizeToFit
+            [label setHidden:NO];
+            
+            // connect our old label point to our new label
+            [lineView addPointPair:oldLabelCenter second:endOfLine forLabel:label];
+        }else{
+            label.text = @"";
+            label.hidden = YES;
+        }
         
 
-        [label setText:[NSString stringWithFormat:@"%@ , %@", datapoint.xValue,datapoint.yValue]];
-        label.textColor = [UIColor blackColor];
-        [label sizeToFit];
-        [label setCenter:labelCenter]; // this must be after sizeToFit
-        [label setHidden:NO];
-        
-        // connect our old label point to our new label
-        [lineView addPointPair:oldLabelCenter second:endOfLine forLabel:label];
-    }
+//    }
 
 }
+
+-(void)sChart:(ShinobiChart *)chart alterDataPointLabel:(SChartDataPointLabel *)label forDataPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series{
+    if ([self.reporteSeleccionado isEqualToString:@"numeroObras"] || [self.reporteSeleccionado isEqualToString:@"numeroObrasDependencias"]) {
+        
+        CGRect newLabelFrame = label.frame;
+
+        
+        label.text = [NSString stringWithFormat:@"%@ obras.", dataPoint.yValue];
+        // Calculate the size of the string label with the supplied font, and no existing constraints on size.
+        NSDictionary *attributes = @{NSFontAttributeName:label.font};
+        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:label.text attributes:attributes];
+        CGFloat labelWidth = [attributedString boundingRectWithSize:CGSizeZero
+                                                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                                            context:nil].size.width;
+        
+        
+        newLabelFrame.size.width = labelWidth;
+        newLabelFrame.size.height = 10;
+        newLabelFrame.origin.x = CGRectGetMidX(label.frame) - (newLabelFrame.size.width + 20);
+        newLabelFrame.origin.y = CGRectGetMidY(label.frame) - newLabelFrame.size.height / 2;
+        label.frame = newLabelFrame;
+
+    }else if ([self.reporteSeleccionado isEqualToString:@"totalInvertido"] || [self.reporteSeleccionado isEqualToString:@"totalInvertidoDependencias"]){
+        
+        CGRect newLabelFrame = label.frame;
+        
+        
+        label.text = [NSString stringWithFormat:@"%@ mdp.", [_currencyFormatter stringFromNumber: dataPoint.yValue]];
+        // Calculate the size of the string label with the supplied font, and no existing constraints on size.
+        NSDictionary *attributes = @{NSFontAttributeName:label.font};
+        NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:label.text attributes:attributes];
+        CGFloat labelWidth = [attributedString boundingRectWithSize:CGSizeZero
+                                                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                                            context:nil].size.width;
+        
+        
+        newLabelFrame.size.width = labelWidth;
+        newLabelFrame.size.height = 20;
+        newLabelFrame.origin.x = CGRectGetMidX(label.frame) - (newLabelFrame.size.width + 20);
+        newLabelFrame.origin.y = CGRectGetMidY(label.frame) - newLabelFrame.size.height / 2;
+        label.frame = newLabelFrame;
+        
+    }
+}
+
 
 - (void) sChartRenderStarted:(ShinobiChart *)chart withFullRedraw:(BOOL)fullRedraw {
     // position our view over the top of the GL canvas

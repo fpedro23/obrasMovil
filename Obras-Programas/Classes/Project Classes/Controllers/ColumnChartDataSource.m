@@ -40,7 +40,12 @@
         columnSeries.title = self.reporte;
         
         //Display labels
-        columnSeries.style.dataPointLabelStyle.showLabels = YES;
+        if ([[self dataForReport] count ] > 15) {
+            columnSeries.style.dataPointLabelStyle.showLabels = NO;
+        }else{
+            columnSeries.style.dataPointLabelStyle.showLabels = YES;
+
+        }
         
         //Position labels
         columnSeries.style.dataPointLabelStyle.offsetFromDataPoint = CGPointMake(0, -15);
@@ -49,7 +54,7 @@
         //Style labels
         columnSeries.style.dataPointLabelStyle.textColor = [UIColor blackColor];
         columnSeries.style.dataPointLabelStyle.displayValues = SChartDataPointLabelDisplayValuesY;
-        
+
         
         
         return columnSeries;
@@ -79,8 +84,7 @@
     
     NSDictionary* elementosReporte = [self dataForReport];
     
-    
-    NSArray *sortedKeys = [[elementosReporte allKeys] sortedArrayUsingSelector: @selector(compare:)];
+        NSArray *sortedKeys = [[elementosReporte allKeys] sortedArrayUsingSelector: @selector(compare:)];
     NSMutableArray *sortedValues = [NSMutableArray array];
     for (NSString *key in sortedKeys) {
         [sortedValues addObject: [elementosReporte objectForKey: key]];
@@ -89,9 +93,14 @@
     
     NSString* key = sortedKeys[dataIndex];
 
+//    if ([self.reporte isEqualToString:@"numeroObras"]) {
+//        datapoint.yValue = [NSString stringWithFormat:@"%@ obras.",elementosReporte[key]];
+//    }else{
+//        datapoint.yValue = elementosReporte[key];
+//    }
 
-    datapoint.xValue = key;
     datapoint.yValue = elementosReporte[key];
+    datapoint.xValue = key;
     
     if(chart.tag ==4){
         datapoint.xValue = elementosReporte[key];
@@ -102,5 +111,8 @@
     
 
 }
+
+
+
 
 @end

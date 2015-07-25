@@ -21,6 +21,7 @@
 #import "ListaReporteGeneral.h"
 #import "Programa.h"
 #import "Subclasificacion.h"
+#import "ListaReporteSubDependencia.h"
 
 //Parametro que usa el Servlet para saber si la peticion proviene del movil
 
@@ -322,6 +323,19 @@
     NSArray *programasObras = [MTLJSONAdapter modelsOfClass:[ListaReporteDependencia class] fromJSONArray:typeWorkProgramJSON error:&error];
     if (error) {
         NSLog(@"Couldn't convert Programas Obras JSON to Programas Obras models: %@", error);
+        return nil;
+    }
+    
+    return programasObras;
+}
+
+
+- (NSArray *)deserializeListReportSubDependenciesromJSON:(NSArray *)typeWorkProgramJSON
+{
+    NSError *error;
+    NSArray *programasObras = [MTLJSONAdapter modelsOfClass:[ListaReporteSubDependencia class] fromJSONArray:typeWorkProgramJSON error:&error];
+    if (error) {
+        NSLog(@"Couldn't convert Programas Obras JSON to Lista reporte subdependencia models: %@", error);
         return nil;
     }
     
