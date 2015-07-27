@@ -34,7 +34,8 @@ typedef NS_OPTIONS(NSInteger, MenuOptions)
     o_Consultas         = 0,
     o_Favoritos         = 1,
     o_Ayuda          = 2,
-    o_Detalle_Consulta  = 3
+    o_Detalle_Consulta  = 3,
+    o_logout = 4
 
 };
 

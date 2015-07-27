@@ -224,7 +224,9 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openQuery:) name:@"openQuery" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showManual:) name:@"showManual" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showVideo:) name:@"showVideo" object:nil];
-
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logout:) name:@"logout" object:nil];
+    
     [self requestToWebServices];
 }
 
@@ -2451,6 +2453,20 @@ const int numResultsPerPage = 200;
     [self performSegueWithIdentifier:@"showWebView" sender:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 
+}
+
+-(void)logout:(NSNotification *)notification{
+    
+//    
+//    [self performSegueWithIdentifier:@"playVideo" sender:self];
+//    [[NSNotificationCenter defaultCenter]removeObserver:self];
+//
+    [AFOAuthCredential deleteCredentialWithIdentifier:kStoreCredentialIdentifier];
+
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
+    NSLog(@"lOGOT");
 }
 
 -(void)showVideo:(NSNotification *)notification{

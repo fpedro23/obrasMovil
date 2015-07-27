@@ -26,6 +26,15 @@
     [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
                                     clientID:kClientID
                                     secret:kClientSecret];
+
+    AFOAuthCredential *credential =
+    [AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier];
+    
+    NSLog(@"%@",credential);
+    if(!credential.isExpired && credential!=nil ){
+    [self performSegueWithIdentifier:@"showViews" sender:self];
+    }
+
     
 }
 
@@ -69,4 +78,7 @@
     
 }
 
+- (IBAction)returnToLogin:(UIStoryboardSegue *)segue{
+    
+}
 @end

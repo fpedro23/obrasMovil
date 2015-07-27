@@ -401,8 +401,10 @@ const NSInteger rowHeight = 45;
             option = o_Ayuda;
 
         }else if (indexPath.row == 3){
-            NSLog(@"Cerrar Sesión");
             //TODO implementar el cierre de sesión
+            option = o_logout;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+            return;
         }
         
         DetailTableViewController *detailViewController = [[DetailTableViewController alloc]initWithDataSource:obrasAndProgramsData menuOption:option];

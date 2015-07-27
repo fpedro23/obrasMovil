@@ -235,6 +235,8 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"showVideo" object:nil];
 
         }
+    }else if (_option == o_logout){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
     }
 }
 
