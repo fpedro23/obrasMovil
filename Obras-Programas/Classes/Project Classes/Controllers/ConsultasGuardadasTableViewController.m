@@ -261,8 +261,8 @@ const NSString *kNombreDependencia;
         Clasificacion *clasificacion = dataSelected[indexPath.row];
         cell.textLabel.text = clasificacion.nombreTipoClasificacion;
     }else if ([nombre isEqualToString:@"Compromisos de Gobierno"]){
-        Subclasificacion *compromiso = dataSelected[indexPath.row];
-        cell.textLabel.text = compromiso.nombreSubclasificacion;
+        Clasificacion *compromiso = dataSelected[indexPath.row];
+        cell.textLabel.text = compromiso.nombreTipoClasificacion;
     }else if ([nombre isEqualToString:@"Inauguradores"]) {
         Inaugurador *inaugurador = dataSelected[indexPath.row];
         cell.textLabel.text = inaugurador.nombreCargoInaugura;

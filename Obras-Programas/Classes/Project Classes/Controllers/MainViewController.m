@@ -1552,8 +1552,8 @@ const int numResultsPerPage = 200;
         if (_subclasificationsSavedData.count > 0) {
             
             for (int i=0; i<[_subclasificationsSavedData count]; i++) {
-                Subclasificacion *sub = _subclasificationsSavedData[i];
-                parameterValue = [parameterValue stringByAppendingString:sub.idSubClasificacion];
+                Clasificacion *sub = _subclasificationsSavedData[i];
+                parameterValue = [parameterValue stringByAppendingString:sub.idTipoClasificacion];
                 if (i!=_subclasificationsSavedData.count-1) {
                     parameterValue = [parameterValue stringByAppendingString:@","];
                 }
@@ -1709,6 +1709,7 @@ const int numResultsPerPage = 200;
                                                                markData:loadData
                                                             searchField:aSearchField];
     _popUpTableView.delegate = self;
+
     
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:_popUpTableView];
     
@@ -2399,7 +2400,16 @@ const int numResultsPerPage = 200;
 }
 
 -(void)showFichaTecnica:(Obra *)obra{
+    
     __block Obra *obraDest = (Obra*)obra;
+
+    
+    if([obra isKindOfClass:[NSNotification class]]){
+        NSLog(@"NOT");
+        NSNotification *notificacion = (NSNotification*)obra;
+        obraDest =  notificacion.object;
+    }
+    
 
     
     if ([obra isKindOfClass:[Programa class]]) {

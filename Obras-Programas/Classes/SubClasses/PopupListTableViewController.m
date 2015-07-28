@@ -218,7 +218,7 @@ const NSInteger rowHeight = 45;
             }
             if (!_isProgramsSelected) {
                 if ([value isEqualToString:@"Compromiso de Gobierno"] || [value isEqualToString:@"Plan Michoacán"]) {
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
             }
             
@@ -268,10 +268,10 @@ const NSInteger rowHeight = 45;
                 if ([value isEqualToString:@"Compromiso de Gobierno"]) {
                     _subclasificacion = dataForSelectedRow;
                     data = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreSublasificationsData];
-                    pushView = YES;
+                    pushView = NO;
                 }else if ([value isEqualToString:@"Plan Michoacán"]){
                     
-                    pushView = YES;
+                    pushView = NO;
                 }
                 
                 if (pushView) {
@@ -432,9 +432,9 @@ const NSInteger rowHeight = 45;
                     NSArray *data = [NSArray array];
                     if ([value isEqualToString:@"Compromiso de Gobierno"]) {
                         data = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreSublasificationsData];
-                        pushView = YES;
+                        pushView = NO;
                     }else if ([value isEqualToString:@"Plan Michoacán"]){
-                        pushView = YES;
+                        pushView = NO;
                     }
                     
                     if (pushView) {
