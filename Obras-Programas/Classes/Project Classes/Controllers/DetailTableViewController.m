@@ -162,7 +162,7 @@
         if (section==0) {
             return @"Obras";
         }else{
-            return @"Programas";
+            return @"";
         }
     }
 }
