@@ -544,7 +544,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHO-Ok-CLT" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -652,7 +652,7 @@
                         <viewControllerLayoutGuide type="top" id="Pao-gc-ea4"/>
                         <viewControllerLayoutGuide type="bottom" id="Hd3-E2-z6Z"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="Exe-uo-t6b">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="Exe-uo-t6b">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

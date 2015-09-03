@@ -230,6 +230,9 @@
     /* Load Saved Selections */
     [self loadSelections];
     [self changeAllBackgrounds];
+    
+    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mapView];
+    self.mapClusterController.delegate =self;
 }
 -(void)viewDidAppear:(BOOL)animated{
     /* Request */
@@ -1739,13 +1742,14 @@ const int numResultsPerPage = 200;
     if(mapView.region.span.latitudeDelta < 9){
 //        NSLog(@"Mostrar obras");
         if(!_showingObras){
+            [self.mapView removeAnnotations:self.mapView.annotations];
             [self displayPinsObraMapView];
-            NSLog(@"%g",self.mapClusterController.zoomLevel);
         }
     }
     if(mapView.region.span.latitudeDelta >= 9){
 //        NSLog(@"Mostrar Estado");
         if(_showingObras && _stateReportData != nil){
+            [self.mapClusterController removeAnnotations:_mapView.annotations withCompletionHandler:nil];
             [self displayPinsMapView];
         }
     }
@@ -1787,7 +1791,7 @@ const int numResultsPerPage = 200;
 
 -(void)displayPinsObraMapView{
     _showingObras = YES;
-    [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapClusterController removeAnnotations:self.mapView.annotations withCompletionHandler:nil];
     
     NSMutableArray *annotations = [NSMutableArray new];
     for (ListaGeolocalizacionObras *reporte in _geolocalizationObrasReportData) {
@@ -1805,9 +1809,7 @@ const int numResultsPerPage = 200;
         [annotations addObject:annotationPoint];
         
     }
-    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mapView];
-    self.mapClusterController.delegate =self;
-    self.mapClusterController.maxZoomLevelForClustering = 6.99;
+
     [self.mapClusterController addAnnotations:annotations withCompletionHandler:NULL];
 
 
@@ -1819,7 +1821,9 @@ const int numResultsPerPage = 200;
     
     _showingObras = NO;
     
-    [self.mapView removeAnnotations:self.mapView.annotations];
+//    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    [self.mapClusterController removeAnnotations:self.mapView.annotations withCompletionHandler:nil];
     
     [self.mapClusterController.mapView removeAnnotations:self.mapView.annotations];
     
