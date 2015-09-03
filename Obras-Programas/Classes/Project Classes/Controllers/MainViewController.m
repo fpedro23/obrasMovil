@@ -231,8 +231,7 @@
     [self loadSelections];
     [self changeAllBackgrounds];
     
-    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mapView];
-    self.mapClusterController.delegate =self;
+
 }
 -(void)viewDidAppear:(BOOL)animated{
     /* Request */
@@ -963,6 +962,8 @@
     _general = nil;
     [_tableView reloadData];
     [_pullToRefreshManager tableViewReloadFinished];
+    [self.mapClusterController removeAnnotations:_mapView.annotations withCompletionHandler:nil];
+    [self.mapView removeAnnotations:_mapView.annotations];
     [self displayPinsMapView];
     [_spreadView reloadData];
 }
@@ -1188,6 +1189,9 @@ const int numResultsPerPage = 200;
 #pragma mark - Resultado Busquedas
 
 -(void)JSONHTTPClientDelegate:(JSONHTTPClient *)client didResponseSearchWorks:(id)response{
+    
+    [self.mapClusterController removeAnnotations:_mapView.annotations withCompletionHandler:nil];
+    [self.mapView removeAnnotations:_mapView.annotations];
     
     NSDictionary *objectsResponse = response;
     
@@ -1737,17 +1741,14 @@ const int numResultsPerPage = 200;
 #pragma mark - Map view delegate
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-//    NSLog(@"%g",mapView.region.span.latitudeDelta);
     
-    if(mapView.region.span.latitudeDelta < 9){
-//        NSLog(@"Mostrar obras");
+    if(mapView.region.span.latitudeDelta < 8){
         if(!_showingObras){
             [self.mapView removeAnnotations:self.mapView.annotations];
             [self displayPinsObraMapView];
         }
     }
     if(mapView.region.span.latitudeDelta >= 9){
-//        NSLog(@"Mostrar Estado");
         if(_showingObras && _stateReportData != nil){
             [self.mapClusterController removeAnnotations:_mapView.annotations withCompletionHandler:nil];
             [self displayPinsMapView];
@@ -1791,6 +1792,11 @@ const int numResultsPerPage = 200;
 
 -(void)displayPinsObraMapView{
     _showingObras = YES;
+    
+    
+    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mapView];
+    self.mapClusterController.delegate =self;
+    
     [self.mapClusterController removeAnnotations:self.mapView.annotations withCompletionHandler:nil];
     
     NSMutableArray *annotations = [NSMutableArray new];
@@ -1826,6 +1832,8 @@ const int numResultsPerPage = 200;
     [self.mapClusterController removeAnnotations:self.mapView.annotations withCompletionHandler:nil];
     
     [self.mapClusterController.mapView removeAnnotations:self.mapView.annotations];
+    
+    self.mapClusterController = nil;
     
     for (ListaReporteEstado *reporte in _stateReportData) {
         
