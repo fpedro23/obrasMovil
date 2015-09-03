@@ -415,6 +415,7 @@
     //Si hay datos en los campos de busqueda, cambios el backgroundColor del boton
     
     [self changeBackgroundColorForNumberOfSelections:_dependenciesSavedData andTypeOfFieldButton:e_Dependencia];
+        [self changeBackgroundColorForNumberOfSelections:_subDependenciesSavedData andTypeOfFieldButton:e_SubDependencia];
     [self changeBackgroundColorForNumberOfSelections:_statesSavedData andTypeOfFieldButton:e_Estado];
     [self changeBackgroundColorForNumberOfSelections:_impactsSavedData andTypeOfFieldButton:e_Impacto];
     [self changeBackgroundColorForNumberOfSelections:_clasificationsSavedData andTypeOfFieldButton:e_Clasificacion];
@@ -903,6 +904,8 @@
     }
     
     [self savedDataForSelections:[NSArray array] andTypeOfFieldButton:e_Dependencia];
+    [self savedDataForSelections:[NSArray array] andTypeOfFieldButton:e_SubDependencia];
+
     [self savedDataForSelections:[NSArray array] andTypeOfFieldButton:e_Estado];
     [self savedDataForSelections:[NSArray array] andTypeOfFieldButton:e_Impacto];
     [self savedDataForSelections:[NSArray array] andTypeOfFieldButton:e_Clasificacion];
