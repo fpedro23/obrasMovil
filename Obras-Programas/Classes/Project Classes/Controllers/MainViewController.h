@@ -13,8 +13,9 @@
 #import "PMCalendar.h"
 #import "SWTableViewCell.h"
 #import "MNMBottomPullToRefreshManager.h"
+#import "CCHMapClusterControllerDelegate.h"
 
-@interface MainViewController : UIViewController <UISearchBarDelegate, UITabBarControllerDelegate, UITableViewDelegate, PopupListTableViewControllerDelegate, JSONHTTPClientDelegate, PMCalendarControllerDelegate, MKMapViewDelegate, SWTableViewCellDelegate, UITextFieldDelegate, MNMBottomPullToRefreshManagerClient>
+@interface MainViewController : UIViewController <UISearchBarDelegate, UITabBarControllerDelegate, UITableViewDelegate, PopupListTableViewControllerDelegate, JSONHTTPClientDelegate, PMCalendarControllerDelegate, MKMapViewDelegate, SWTableViewCellDelegate, UITextFieldDelegate, MNMBottomPullToRefreshManagerClient, CCHMapClusterControllerDelegate>
 
 - (IBAction)performQuery:(id)sender;
 

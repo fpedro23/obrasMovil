@@ -177,6 +177,7 @@ extern NSString * const kKeyListaProgramas;
 extern NSString * const kKeyListaReporteDependencia;
 extern NSString * const kKeyListaReporteGeneral;
 extern NSString * const kKeyListaReporteSubDependencia;
+extern NSString * const kKeyListaGeolocalizacionObras;
 
 //              Parameters Servlet Buscar
 /******************************************************/

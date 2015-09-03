@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		893461B11B643361005C14C0 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893461B01B643361005C14C0 /* YTPlayerView.m */; };
+		8959BF871B97FB7400DA8425 /* ListaGeolocalizacionObras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF861B97FB7400DA8425 /* ListaGeolocalizacionObras.m */; };
+		8959BFA71B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF8F1B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.m */; };
+		8959BFA81B9804FE00DA8425 /* CCHFadeInOutMapAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF911B9804FE00DA8425 /* CCHFadeInOutMapAnimator.m */; };
+		8959BFA91B9804FE00DA8425 /* CCHMapClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF941B9804FE00DA8425 /* CCHMapClusterAnnotation.m */; };
+		8959BFAA1B9804FE00DA8425 /* CCHMapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF961B9804FE00DA8425 /* CCHMapClusterController.m */; };
+		8959BFAB1B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF981B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.m */; };
+		8959BFAC1B9804FE00DA8425 /* CCHMapClusterControllerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF9B1B9804FE00DA8425 /* CCHMapClusterControllerUtils.m */; };
+		8959BFAD1B9804FE00DA8425 /* CCHMapClusterOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BF9E1B9804FE00DA8425 /* CCHMapClusterOperation.m */; };
+		8959BFAE1B9804FE00DA8425 /* CCHMapTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BFA01B9804FE00DA8425 /* CCHMapTree.m */; };
+		8959BFAF1B9804FE00DA8425 /* CCHMapTreeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BFA21B9804FE00DA8425 /* CCHMapTreeUtils.m */; };
+		8959BFB01B9804FE00DA8425 /* CCHMapViewDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BFA41B9804FE00DA8425 /* CCHMapViewDelegateProxy.m */; };
+		8959BFB11B9804FE00DA8425 /* CCHNearCenterMapClusterer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959BFA61B9804FE00DA8425 /* CCHNearCenterMapClusterer.m */; };
 		8992768B1B6435170014B6D5 /* YoutubePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8992768A1B6435170014B6D5 /* YoutubePlayerViewController.m */; };
 		8992768D1B6437300014B6D5 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 8992768C1B6437300014B6D5 /* Assets */; };
 		8997A3A51AD325C1002F2CCA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8997A3A41AD325C1002F2CCA /* LoginViewController.m */; };
@@ -292,6 +304,33 @@
 /* Begin PBXFileReference section */
 		893461AF1B643361005C14C0 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		893461B01B643361005C14C0 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		8959BF851B97FB7400DA8425 /* ListaGeolocalizacionObras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaGeolocalizacionObras.h; sourceTree = "<group>"; };
+		8959BF861B97FB7400DA8425 /* ListaGeolocalizacionObras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaGeolocalizacionObras.m; sourceTree = "<group>"; };
+		8959BF8E1B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHCenterOfMassMapClusterer.h; sourceTree = "<group>"; };
+		8959BF8F1B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHCenterOfMassMapClusterer.m; sourceTree = "<group>"; };
+		8959BF901B9804FE00DA8425 /* CCHFadeInOutMapAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHFadeInOutMapAnimator.h; sourceTree = "<group>"; };
+		8959BF911B9804FE00DA8425 /* CCHFadeInOutMapAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHFadeInOutMapAnimator.m; sourceTree = "<group>"; };
+		8959BF921B9804FE00DA8425 /* CCHMapAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapAnimator.h; sourceTree = "<group>"; };
+		8959BF931B9804FE00DA8425 /* CCHMapClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterAnnotation.h; sourceTree = "<group>"; };
+		8959BF941B9804FE00DA8425 /* CCHMapClusterAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapClusterAnnotation.m; sourceTree = "<group>"; };
+		8959BF951B9804FE00DA8425 /* CCHMapClusterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterController.h; sourceTree = "<group>"; };
+		8959BF961B9804FE00DA8425 /* CCHMapClusterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapClusterController.m; sourceTree = "<group>"; };
+		8959BF971B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterControllerDebugPolygon.h; sourceTree = "<group>"; };
+		8959BF981B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapClusterControllerDebugPolygon.m; sourceTree = "<group>"; };
+		8959BF991B9804FE00DA8425 /* CCHMapClusterControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterControllerDelegate.h; sourceTree = "<group>"; };
+		8959BF9A1B9804FE00DA8425 /* CCHMapClusterControllerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterControllerUtils.h; sourceTree = "<group>"; };
+		8959BF9B1B9804FE00DA8425 /* CCHMapClusterControllerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapClusterControllerUtils.m; sourceTree = "<group>"; };
+		8959BF9C1B9804FE00DA8425 /* CCHMapClusterer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterer.h; sourceTree = "<group>"; };
+		8959BF9D1B9804FE00DA8425 /* CCHMapClusterOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapClusterOperation.h; sourceTree = "<group>"; };
+		8959BF9E1B9804FE00DA8425 /* CCHMapClusterOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapClusterOperation.m; sourceTree = "<group>"; };
+		8959BF9F1B9804FE00DA8425 /* CCHMapTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapTree.h; sourceTree = "<group>"; };
+		8959BFA01B9804FE00DA8425 /* CCHMapTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapTree.m; sourceTree = "<group>"; };
+		8959BFA11B9804FE00DA8425 /* CCHMapTreeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapTreeUtils.h; sourceTree = "<group>"; };
+		8959BFA21B9804FE00DA8425 /* CCHMapTreeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapTreeUtils.m; sourceTree = "<group>"; };
+		8959BFA31B9804FE00DA8425 /* CCHMapViewDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHMapViewDelegateProxy.h; sourceTree = "<group>"; };
+		8959BFA41B9804FE00DA8425 /* CCHMapViewDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHMapViewDelegateProxy.m; sourceTree = "<group>"; };
+		8959BFA51B9804FE00DA8425 /* CCHNearCenterMapClusterer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHNearCenterMapClusterer.h; sourceTree = "<group>"; };
+		8959BFA61B9804FE00DA8425 /* CCHNearCenterMapClusterer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHNearCenterMapClusterer.m; sourceTree = "<group>"; };
 		899276891B6435170014B6D5 /* YoutubePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubePlayerViewController.h; sourceTree = "<group>"; };
 		8992768A1B6435170014B6D5 /* YoutubePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubePlayerViewController.m; sourceTree = "<group>"; };
 		8992768C1B6437300014B6D5 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -801,6 +840,38 @@
 				893461B01B643361005C14C0 /* YTPlayerView.m */,
 			);
 			name = YOTUBEPLAYER;
+			sourceTree = "<group>";
+		};
+		8959BF8D1B9804EE00DA8425 /* CLUSTER */ = {
+			isa = PBXGroup;
+			children = (
+				8959BF8E1B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.h */,
+				8959BF8F1B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.m */,
+				8959BF901B9804FE00DA8425 /* CCHFadeInOutMapAnimator.h */,
+				8959BF911B9804FE00DA8425 /* CCHFadeInOutMapAnimator.m */,
+				8959BF921B9804FE00DA8425 /* CCHMapAnimator.h */,
+				8959BF931B9804FE00DA8425 /* CCHMapClusterAnnotation.h */,
+				8959BF941B9804FE00DA8425 /* CCHMapClusterAnnotation.m */,
+				8959BF951B9804FE00DA8425 /* CCHMapClusterController.h */,
+				8959BF961B9804FE00DA8425 /* CCHMapClusterController.m */,
+				8959BF971B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.h */,
+				8959BF981B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.m */,
+				8959BF991B9804FE00DA8425 /* CCHMapClusterControllerDelegate.h */,
+				8959BF9A1B9804FE00DA8425 /* CCHMapClusterControllerUtils.h */,
+				8959BF9B1B9804FE00DA8425 /* CCHMapClusterControllerUtils.m */,
+				8959BF9C1B9804FE00DA8425 /* CCHMapClusterer.h */,
+				8959BF9D1B9804FE00DA8425 /* CCHMapClusterOperation.h */,
+				8959BF9E1B9804FE00DA8425 /* CCHMapClusterOperation.m */,
+				8959BF9F1B9804FE00DA8425 /* CCHMapTree.h */,
+				8959BFA01B9804FE00DA8425 /* CCHMapTree.m */,
+				8959BFA11B9804FE00DA8425 /* CCHMapTreeUtils.h */,
+				8959BFA21B9804FE00DA8425 /* CCHMapTreeUtils.m */,
+				8959BFA31B9804FE00DA8425 /* CCHMapViewDelegateProxy.h */,
+				8959BFA41B9804FE00DA8425 /* CCHMapViewDelegateProxy.m */,
+				8959BFA51B9804FE00DA8425 /* CCHNearCenterMapClusterer.h */,
+				8959BFA61B9804FE00DA8425 /* CCHNearCenterMapClusterer.m */,
+			);
+			name = CLUSTER;
 			sourceTree = "<group>";
 		};
 		8997A3A61AD325F9002F2CCA /* AFOAuth2Manager */ = {
@@ -1318,6 +1389,8 @@
 		ABD705B319EB7E1900790837 /* Reportes */ = {
 			isa = PBXGroup;
 			children = (
+				8959BF851B97FB7400DA8425 /* ListaGeolocalizacionObras.h */,
+				8959BF861B97FB7400DA8425 /* ListaGeolocalizacionObras.m */,
 				ABCDCD5C19E88BDB00C6AACC /* ListaReporteDependencia.h */,
 				ABCDCD5D19E88BDB00C6AACC /* ListaReporteDependencia.m */,
 				ABCDCD5E19E88BDB00C6AACC /* ListaReporteEstado.h */,
@@ -1468,6 +1541,7 @@
 		ABFCC48619C2DDA10074CA01 /* External Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8959BF8D1B9804EE00DA8425 /* CLUSTER */,
 				893461AE1B64334C005C14C0 /* YOTUBEPLAYER */,
 				8997A3A61AD325F9002F2CCA /* AFOAuth2Manager */,
 				ABBDAA4719F72FFA00290B96 /* MWPhotoBrowser */,
@@ -1972,6 +2046,7 @@
 				8992768B1B6435170014B6D5 /* YoutubePlayerViewController.m in Sources */,
 				ABA8306019F705440032EA3D /* MNMBottomPullToRefreshManager.m in Sources */,
 				AB91254E19D4CB1C00151A47 /* Obra.m in Sources */,
+				8959BFAE1B9804FE00DA8425 /* CCHMapTree.m in Sources */,
 				AB02862C19F50ADF0053033A /* UIImage+Additional.m in Sources */,
 				ABBDAAB119F72FFA00290B96 /* MWTapDetectingView.m in Sources */,
 				ABAC4F1819E25F48002B15B5 /* MDSpreadViewHeaderCell.m in Sources */,
@@ -1993,6 +2068,7 @@
 				ABBDAAB719F72FFA00290B96 /* PSTCollectionView.m in Sources */,
 				AB5004A819E20C7F003392E8 /* ObraProgramaCell.m in Sources */,
 				ABCDCD6419E88BDB00C6AACC /* ListaReporteGeneral.m in Sources */,
+				8959BFB11B9804FE00DA8425 /* CCHNearCenterMapClusterer.m in Sources */,
 				ABBDAAE219F89A0C00290B96 /* BmProgramas.m in Sources */,
 				ABBDAACF19F72FFA00290B96 /* UIButton+WebCache.m in Sources */,
 				ABFCC4F019C2DDA10074CA01 /* UIAlertView+AFNetworking.m in Sources */,
@@ -2011,10 +2087,14 @@
 				ABE1584819E104C80004F691 /* PMDimmingView.m in Sources */,
 				ABCFFFFA19D9474D002124B5 /* M13ProgressView.m in Sources */,
 				ABBDAAC919F72FFA00290B96 /* SDWebImageCompat.m in Sources */,
+				8959BFAC1B9804FE00DA8425 /* CCHMapClusterControllerUtils.m in Sources */,
 				AB02862419F50ADF0053033A /* MZAppearance.m in Sources */,
 				ABCDCD4219E7D97B00C6AACC /* QBPopupMenuItem.m in Sources */,
+				8959BF871B97FB7400DA8425 /* ListaGeolocalizacionObras.m in Sources */,
+				8959BFAA1B9804FE00DA8425 /* CCHMapClusterController.m in Sources */,
 				ABCDCD6219E88BDB00C6AACC /* ListaReporteDependencia.m in Sources */,
 				ABC993F819F1950E0041B6B5 /* GridViewController.m in Sources */,
+				8959BFAD1B9804FE00DA8425 /* CCHMapClusterOperation.m in Sources */,
 				AB02862A19F50ADF0053033A /* MZFormSheetSegue.m in Sources */,
 				ABFCC51019C2DDA10074CA01 /* TSBlurView.m in Sources */,
 				ABBDAAAD19F72FFA00290B96 /* MWGridViewController.m in Sources */,
@@ -2048,6 +2128,7 @@
 				AB36C62719D6074500B77B83 /* MTLManagedObjectAdapter.m in Sources */,
 				ABBDAADF19F844ED00290B96 /* TipoApoyo.m in Sources */,
 				ABE1584C19E104C80004F691 /* PMThemeShadow.m in Sources */,
+				8959BFAF1B9804FE00DA8425 /* CCHMapTreeUtils.m in Sources */,
 				ABE1584A19E104C80004F691 /* PMSelectionView.m in Sources */,
 				ABBDAAB519F72FFA00290B96 /* README.mdown in Sources */,
 				ABBDAAC419F72FFA00290B96 /* README.md in Sources */,
@@ -2060,6 +2141,7 @@
 				AB02862519F50ADF0053033A /* NSInvocation+Copy.m in Sources */,
 				ABBDAAD319F72FFA00290B96 /* UIImageView+HighlightedWebCache.m in Sources */,
 				ABCFFFFC19D9474D002124B5 /* UIImage+ImageEffects.m in Sources */,
+				8959BFA71B9804FE00DA8425 /* CCHCenterOfMassMapClusterer.m in Sources */,
 				ABFCC4F319C2DDA10074CA01 /* UIProgressView+AFNetworking.m in Sources */,
 				ABFCC4E719C2DDA10074CA01 /* AFHTTPSessionManager.m in Sources */,
 				ABCDCD4319E7D97B00C6AACC /* QBPopupMenuItemView.m in Sources */,
@@ -2077,11 +2159,13 @@
 				ABBDAAC719F72FFA00290B96 /* NSData+ImageContentType.m in Sources */,
 				AB36C62419D6074500B77B83 /* EXTScope.m in Sources */,
 				ABCDCDBA19E9050300C6AACC /* DBHelper.m in Sources */,
+				8959BFA81B9804FE00DA8425 /* CCHFadeInOutMapAnimator.m in Sources */,
 				ABBDAAD019F72FFA00290B96 /* UIImage+GIF.m in Sources */,
 				ABBDAAD619F72FFA00290B96 /* UIView+WebCacheOperation.m in Sources */,
 				ABC9940D19F195360041B6B5 /* FirstColumnTableViewController.m in Sources */,
 				ABCDCD4019E7D97B00C6AACC /* QBPlasticPopupMenu.m in Sources */,
 				ABFCC4F719C2DDA10074CA01 /* SIAlertView.m in Sources */,
+				8959BFA91B9804FE00DA8425 /* CCHMapClusterAnnotation.m in Sources */,
 				893461B11B643361005C14C0 /* YTPlayerView.m in Sources */,
 				ABBDAAC219F72FFA00290B96 /* PSTGridLayoutSection.m in Sources */,
 				ABE1584419E104C80004F691 /* NSDate+Helpers.m in Sources */,
@@ -2099,6 +2183,7 @@
 				AB06728D1A074216004A53F1 /* WebViewController.m in Sources */,
 				ABCDCDB119E8F3C300C6AACC /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				AB36C64219D663E700B77B83 /* NSObject+RMArchivable.m in Sources */,
+				8959BFB01B9804FE00DA8425 /* CCHMapViewDelegateProxy.m in Sources */,
 				ABBDAAB919F72FFA00290B96 /* PSTCollectionViewController.m in Sources */,
 				ABBDAAB819F72FFA00290B96 /* PSTCollectionViewCell.m in Sources */,
 				ABFCC4F219C2DDA10074CA01 /* UIImageView+AFNetworking.m in Sources */,
@@ -2114,6 +2199,7 @@
 				8997A3B11AD325F9002F2CCA /* README.md in Sources */,
 				AB9E738719CBDFDA00C16E66 /* PopupListTableViewController.m in Sources */,
 				ABCDCDA319E8ECA200C6AACC /* Obras-Programas.xcdatamodeld in Sources */,
+				8959BFAB1B9804FE00DA8425 /* CCHMapClusterControllerDebugPolygon.m in Sources */,
 				AB02862B19F50ADF0053033A /* MZTransition.m in Sources */,
 				ABAC4F1219E25F48002B15B5 /* MDSpreadView.m in Sources */,
 				ABBDAAC819F72FFA00290B96 /* SDImageCache.m in Sources */,

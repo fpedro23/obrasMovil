@@ -38,6 +38,9 @@
 #import "Subclasificacion.h"
 #import "AFOAuth2Manager.h"
 #import "ListaReporteSubDependencia.h"
+#import "ListaGeolocalizacionObras.h"
+#import "CCHMapClusterController.h"
+#import "CCHMapClusterAnnotation.h"
 
 
 #define METERS_PER_MILE 1609.344
@@ -52,6 +55,9 @@
 @property (nonatomic, strong) QBPopupMenu *morePopupMenu;
 
 /* IBOutlets*/
+
+@property (strong, nonatomic) CCHMapClusterController *mapClusterController;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *txtRangoMinimo;
 @property (weak, nonatomic) IBOutlet UITextField *txtRangoMaximo;
@@ -105,6 +111,9 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) UIButton *btnCalendarSelected;
 @property (nonatomic, strong) UILabel *lblCalendarSelected;
+
+@property BOOL showingObras;
+
 
 @property BOOL isStartDate;
 
@@ -173,6 +182,8 @@
 @property (nonatomic, strong) NSMutableArray *stateReportData;
 @property (nonatomic, strong) NSMutableArray *dependenciesReportData;
 @property (nonatomic, strong) NSMutableArray *subDependenciesReportData;
+@property (nonatomic, strong) NSMutableArray *geolocalizationObrasReportData;
+
 
 
 #pragma mark - General
@@ -945,6 +956,7 @@
     _tableViewData = [NSMutableArray array];
     _stateReportData        =  [NSMutableArray array];
     _dependenciesReportData = [NSMutableArray array];
+    _geolocalizationObrasReportData = [NSMutableArray array];
     _general = nil;
     [_tableView reloadData];
     [_pullToRefreshManager tableViewReloadFinished];
@@ -1142,11 +1154,16 @@ const int numResultsPerPage = 200;
         NSArray *JSONListaReporteSubDependencia = responseObject[kKeyListaReporteSubDependencia];
         JSONListaReporteSubDependencia = [_jsonClient deserializeListReportSubDependenciesromJSON:JSONListaReporteSubDependencia];
         
+        NSArray *JSONListaGeolocalizacionObras = responseObject[kKeyListaGeolocalizacionObras];
+        JSONListaGeolocalizacionObras = [_jsonClient deserializeListGeolocalizationFromJSON:JSONListaGeolocalizacionObras];
+        
+        
         NSDictionary *response = @{kKeyListaObras                : JSONListaObras,
                                    kKeyListaReporteDependencia   : JSONListaReporteDepedencia,
                                    kKeyListaReporteEstado        : JSONListaReporteEstados,
                                    kKeyListaReporteGeneral       : JSONListaReporteGeneral,
                                    kKeyListaReporteSubDependencia : JSONListaReporteSubDependencia,
+                                   kKeyListaGeolocalizacionObras : JSONListaGeolocalizacionObras,
                                    };
         
         [self JSONHTTPClientDelegate:nil didResponseSearchWorks:response];
@@ -1177,6 +1194,8 @@ const int numResultsPerPage = 200;
     _stateReportData        = objectsResponse[kKeyListaReporteEstado];
     _dependenciesReportData = objectsResponse[kKeyListaReporteDependencia];
     _subDependenciesReportData = objectsResponse[kKeyListaReporteSubDependencia];
+    _geolocalizationObrasReportData = objectsResponse[kKeyListaGeolocalizacionObras];
+    
     NSArray *generalData    = objectsResponse[kKeyListaReporteGeneral];
     
     [_tableView reloadData];
@@ -1712,11 +1731,97 @@ const int numResultsPerPage = 200;
     return textFieldNum;
 }
 
-#pragma mark - displayPinsOnMap
+#pragma mark - Map view delegate
+
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+//    NSLog(@"%g",mapView.region.span.latitudeDelta);
+    
+    if(mapView.region.span.latitudeDelta < 9){
+//        NSLog(@"Mostrar obras");
+        if(!_showingObras){
+            [self displayPinsObraMapView];
+            NSLog(@"%g",self.mapClusterController.zoomLevel);
+        }
+    }
+    if(mapView.region.span.latitudeDelta >= 9){
+//        NSLog(@"Mostrar Estado");
+        if(_showingObras && _stateReportData != nil){
+            [self displayPinsMapView];
+        }
+    }
+}
+
+
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
+{
+    MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] ;
+    
+    // If the annotation is the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // alter properties of the customPinView
+    customPinView.animatesDrop = YES;
+    customPinView.canShowCallout = YES;
+    
+    return customPinView; // if you return nil... then the MKPinAnnotation default will be dropped.
+}
+
+
+- (NSString *)mapClusterController:(CCHMapClusterController *)mapClusterController titleForMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation
+{
+    NSUInteger numAnnotations = mapClusterAnnotation.annotations.count;
+    NSString *unit = numAnnotations > 1 ? @"obras" : @"obra";
+    return [NSString stringWithFormat:@"%tu %@", numAnnotations, unit];
+}
+
+- (NSString *)mapClusterController:(CCHMapClusterController *)mapClusterController subtitleForMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation
+{
+    NSUInteger numAnnotations = MIN(mapClusterAnnotation.annotations.count, 5);
+    NSArray *annotations = [mapClusterAnnotation.annotations.allObjects subarrayWithRange:NSMakeRange(0, numAnnotations)];
+    NSArray *titles = [annotations valueForKey:@"title"];
+    return [titles componentsJoinedByString:@", "];
+}
+
+
+-(void)displayPinsObraMapView{
+    _showingObras = YES;
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    NSMutableArray *annotations = [NSMutableArray new];
+    for (ListaGeolocalizacionObras *reporte in _geolocalizationObrasReportData) {
+        
+        CLLocationCoordinate2D annotationCoord;
+        
+        annotationCoord.latitude = [reporte.latitud doubleValue];
+        annotationCoord.longitude =  [reporte.longitud doubleValue];
+        
+        MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+        annotationPoint.coordinate = annotationCoord;
+        annotationPoint.title = reporte.denominacion;
+        annotationPoint.subtitle = [NSString stringWithFormat:@"Total Invertido: %@", [_currencyFormatter stringFromNumber:reporte.inversionTotal]];
+        
+        [annotations addObject:annotationPoint];
+        
+    }
+    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mapView];
+    self.mapClusterController.delegate =self;
+    self.mapClusterController.maxZoomLevelForClustering = 6.99;
+    [self.mapClusterController addAnnotations:annotations withCompletionHandler:NULL];
+
+
+    
+    
+}
 
 -(void)displayPinsMapView{
     
+    _showingObras = NO;
+    
     [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    [self.mapClusterController.mapView removeAnnotations:self.mapView.annotations];
     
     for (ListaReporteEstado *reporte in _stateReportData) {
         
@@ -1729,15 +1834,16 @@ const int numResultsPerPage = 200;
         annotationPoint.coordinate = annotationCoord;
         annotationPoint.title = reporte.estado.nombreEstado;
         annotationPoint.subtitle = [NSString stringWithFormat:@"Obras: %@  Inversión: %@", reporte.numeroObras, [_currencyFormatter stringFromNumber:reporte.totalInvertido]];
+        
         [_mapView addAnnotation:annotationPoint];
     }
     
-    CLLocationCoordinate2D annotationCoord;
-    annotationCoord.latitude = 23.123548;
-    annotationCoord.longitude = - 102.293513;
-    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(annotationCoord, 1500.0*METERS_PER_MILE, 1500.0*METERS_PER_MILE);
-    [_mapView setRegion:viewRegion animated:YES];
+//    CLLocationCoordinate2D annotationCoord;
+//    annotationCoord.latitude = 23.123548;
+//    annotationCoord.longitude = - 102.293513;
+//    
+//    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(annotationCoord, 1500.0*METERS_PER_MILE, 1500.0*METERS_PER_MILE);
+//    [_mapView setRegion:viewRegion animated:YES];
     
 }
 

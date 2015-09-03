@@ -10,6 +10,8 @@
 	<string>Obras-Programas</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</key>
+		<string>https://github.com/choefele/CCHMapClusterController.git</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>https://github.com/fpedro23/obrasMovil.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Obras-Programas.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</key>
+		<string>../../Obras-Programas/Classes/External%20Classes/CCHMapClusterController/</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CCHMapClusterController</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
