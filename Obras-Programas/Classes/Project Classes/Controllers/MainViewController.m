@@ -121,6 +121,7 @@
 
 @property (nonatomic, strong) NSArray *menuData;
 @property (nonatomic, strong) NSArray *dependencyData;
+@property (nonatomic, strong) NSArray *subdependencyData;
 @property (nonatomic, strong) NSArray *statesData;
 @property (nonatomic, strong) NSArray *impactsData;
 @property (nonatomic, strong) NSArray *inauguratorData;
@@ -143,6 +144,8 @@
 #pragma mark - Data Saved For Selections
 
 @property (nonatomic, strong) NSArray *dependenciesSavedData;
+@property (nonatomic, strong) NSArray *subDependenciesSavedData;
+
 @property (nonatomic, strong) NSArray *statesSavedData;
 @property (nonatomic, strong) NSArray *impactsSavedData;
 @property (nonatomic, strong) NSArray *inauguratorSavedData;
@@ -329,6 +332,8 @@
     _worksProgramsSavedData     = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreTypeWorkOrProgram];
     [self setupTitle:_worksProgramsSavedData rowPressed:NO];
     _dependenciesSavedData      = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreDependencies];
+    _subDependenciesSavedData   = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreSubDependencies];
+
     _statesSavedData            = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreStates];
     _impactsSavedData           = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreImpact];
     _clasificationsSavedData    = [[NSUserDefaults standardUserDefaults]rm_customObjectForKey:kKeyStoreClasification];
@@ -362,6 +367,7 @@
     _txtDenominacion.text       = consulta.denominacion;
     _txtIDObraPrograma.text     = consulta.idObra;
     _dependenciesSavedData      = consulta.dependenciasData;
+    _subDependenciesSavedData   = consulta.subDependenciasData;
     _statesSavedData            = consulta.estadosData;
     _impactsSavedData           = consulta.impactosData;
     _clasificationsSavedData    = consulta.clasificacionesData;
@@ -389,6 +395,7 @@
     //Save All Data
     
     [[NSUserDefaults standardUserDefaults]rm_setCustomObject:_dependenciesSavedData forKey:kKeyStoreDependencies];
+    [[NSUserDefaults standardUserDefaults]rm_setCustomObject:_subDependenciesSavedData forKey:kKeyStoreDependencies];
     [[NSUserDefaults standardUserDefaults]rm_setCustomObject:_statesSavedData forKey:kKeyStoreStates];
     [[NSUserDefaults standardUserDefaults]rm_setCustomObject:_impactsSavedData forKey:kKeyStoreImpact];
     [[NSUserDefaults standardUserDefaults]rm_setCustomObject:_clasificationsSavedData forKey:kKeyStoreClasification];
@@ -414,7 +421,7 @@
     [self changeBackgroundColorForNumberOfSelections:_invesmentsSavedData andTypeOfFieldButton:e_Tipo_Inversion];
     [self changeBackgroundColorForNumberOfSelections:_inauguratorSavedData andTypeOfFieldButton:e_Nombre_Inaugura];
     [self changeBackgroundColorForNumberOfSelections:_inauguratorOptionSavedData andTypeOfFieldButton:e_Inaugurada];
-    [self changeBackgroundColorForNumberOfSelections:_susceptibleOptionSavedData andTypeOfFieldButton:e_Suscpetible];
+    [self changeBackgroundColorForNumberOfSelections:_subDependenciesSavedData andTypeOfFieldButton:e_Suscpetible];
 }
 
 
@@ -463,6 +470,15 @@
     [_jsonClient GET:kServletConsultarDependencias parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
         
         _dependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    }];
+    
+    
+    [_jsonClient GET:kServletConsultarSubDependencias parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        _subdependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error.localizedDescription);
@@ -792,11 +808,19 @@
 - (IBAction)displaySusceptibleOptions:(id)sender {
     
     [self displayItemsOnButton:_btnSusceptible
-                withDataSource:_susceptibleOptionData
-        withDataToShowCheckBox:_susceptibleOptionSavedData
+                withDataSource:_subdependencyData
+        withDataToShowCheckBox:_subDependenciesSavedData
                isBarButtonItem:NO
                         isMenu:NO
-                   searchField:e_Suscpetible];
+                   searchField:e_SubDependencia];
+    
+//    [self displayItemsOnButton:_btndependency
+//                withDataSource:_dependencyData
+//        withDataToShowCheckBox:_dependenciesSavedData
+//               isBarButtonItem:NO
+//                        isMenu:NO
+//                   searchField:e_Dependencia];
+    
 }
 
 - (IBAction)displayAnioPrograma:(id)sender {
@@ -1287,6 +1311,8 @@ const int numResultsPerPage = 200;
     //Dependencia
     if (_dependenciesSavedData.count>0)
         consulta.dependenciasData = _dependenciesSavedData;
+    if(_subDependenciesSavedData.count>0)
+        consulta.subDependenciasData = _subDependenciesSavedData;
     //Estado
     if (_statesSavedData.count>0)
         consulta.estadosData = _statesSavedData;
@@ -1422,6 +1448,23 @@ const int numResultsPerPage = 200;
             }
             [parameters setObject:parameterValue forKey:kParamDependencia];
         }
+        
+        
+        /* SubDepedencias */
+        parameterValue = @"";
+        
+        if (_subDependenciesSavedData.count > 0) {
+            
+            for (int i=0; i<[_subDependenciesSavedData count]; i++) {
+                Dependencia *dependencia = _subDependenciesSavedData[i];
+                parameterValue = [parameterValue stringByAppendingString:dependencia.idDependencia];
+                if (i!=_subDependenciesSavedData.count-1) {
+                    parameterValue = [parameterValue stringByAppendingString:@","];
+                }
+            }
+            [parameters setObject:parameterValue forKey:kParamDependencia];
+        }
+        
         
         /* Estados */
         
@@ -1810,6 +1853,9 @@ const int numResultsPerPage = 200;
     if (field == e_Dependencia) {
         _dependenciesSavedData = data;
         [[NSUserDefaults standardUserDefaults]rm_setCustomObject:data forKey:kKeyStoreDependencies];
+    }else if (field == e_SubDependencia){
+            _subDependenciesSavedData = data;
+            [[NSUserDefaults standardUserDefaults]rm_setCustomObject:data forKey:kKeyStoreSubDependencies];
     }else if (field == e_Estado){
         _statesSavedData = data;
         [[NSUserDefaults standardUserDefaults]rm_setCustomObject:data forKey:kKeyStoreStates];
@@ -1895,7 +1941,7 @@ const int numResultsPerPage = 200;
         _btnInaugurada.backgroundColor     = colorForSelection;
         [_btnInaugurada setTitleColor:colorForTitleSelection forState:UIControlStateNormal];
         
-    }else if (field == e_Suscpetible){
+    }else if (field == e_SubDependencia){
         _btnSusceptible.backgroundColor     = colorForSelection;
         [_btnSusceptible setTitleColor:colorForTitleSelection forState:UIControlStateNormal];
     }else if (field == e_AnioPrograma){

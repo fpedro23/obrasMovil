@@ -481,7 +481,7 @@ const NSInteger rowHeight = 45;
     }else if (_field == e_Clasificacion){
         Clasificacion *clasification = (Clasificacion *)objectModel;
         value = clasification.nombreTipoClasificacion;
-    }else if (_field == e_Dependencia){
+    }else if (_field == e_Dependencia || _field == e_SubDependencia){
         Dependencia *dependency = (Dependencia *)objectModel;
         value = dependency.nombreDependencia;
     }else if (_field == e_Tipo_Inversion){

@@ -25,7 +25,8 @@ typedef NS_OPTIONS(NSInteger, MainSearchFields)
     e_RangoInversion    = 10,
     e_Sort_Result       = 11,
     e_AnioPrograma      = 12,
-    e_SubClasifications = 13
+    e_SubClasifications = 13,
+    e_SubDependencia = 14
 
 };
 
@@ -72,6 +73,8 @@ extern NSString * const kServletConsultarInversiones;
 extern NSString * const kServletConsultarClasificacion;
 extern NSString * const kServletConsultarTipoObraPrograma;
 extern NSString * const kServletConsultarDependencias;
+extern NSString * const kServletConsultarSubDependencias;
+
 extern NSString * const kServletConsultarSubclasificacion;
 extern NSString * const kClientID;
 extern NSString * const kClientSecret;
@@ -86,6 +89,8 @@ extern MainSearchFields searchFields;
 /******************************************************/
 
 extern NSString * const kKeyStoreDependencies;
+extern NSString * const kKeyStoreSubDependencies;
+
 extern NSString * const kKeyStoreTypeWorkOrProgram;
 extern NSString * const kKeyStoreStates;
 extern NSString * const kKeyStoreCity;
@@ -181,6 +186,7 @@ extern NSString * const kParamIdPrograma;
 extern NSString * const kParamBusquedaRapida;
 extern NSString * const kParamTipoDeObra;
 extern NSString * const kParamDependencia;
+extern NSString * const kParamSubDependencia;
 extern NSString * const kParamEstado;
 extern NSString * const kParamInversionMinima;
 extern NSString * const kParamImversionMaxima;

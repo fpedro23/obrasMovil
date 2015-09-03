@@ -53,12 +53,16 @@ NSString * const kServletConsultarInversiones       = @"inversiones";
 NSString * const kServletConsultarClasificacion     = @"clasificaciones";
 NSString * const kServletConsultarTipoObraPrograma  = @"tiposDeObra";
 NSString * const kServletConsultarDependencias      = @"dependencias";
+NSString * const kServletConsultarSubDependencias   = @"subdependenciasiPad";
+
 NSString * const kServletConsultarSubclasificacion  = @"clasificaciones";
 
 //              KEYS TO PERSIST DATA
 /******************************************************/
 
 NSString * const kKeyStoreDependencies              =  @"kdp";
+NSString * const kKeyStoreSubDependencies              =  @"ksdp";
+
 NSString * const kKeyStoreTypeWorkOrProgram         =  @"ktp";
 NSString * const kKeyStoreStates                    =  @"kedo";
 NSString * const kKeyStoreCity                      =  @"kmun";
@@ -168,6 +172,8 @@ NSString * const kParamIdPrograma           = @"idPrograma";
 NSString * const kParamBusquedaRapida       = @"busquedaRapida";
 NSString * const kParamTipoDeObra           = @"tipoDeObra";
 NSString * const kParamDependencia          = @"dependencia";
+NSString * const kParamSubDependencia       = @"subdependencias";
+
 NSString * const kParamEstado               = @"estado";
 NSString * const kParamInversionMinima      = @"inversionMinima";
 NSString * const kParamImversionMaxima      = @"inversionMaxima";

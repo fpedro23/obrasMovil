@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString * idObra;
 @property (nonatomic, strong) NSString * idPrograma;
 @property (nonatomic, strong) NSArray * dependenciasData;
+@property (nonatomic, strong) NSArray * subDependenciasData;
+
 @property (nonatomic, strong) NSArray * estadosData;
 @property (nonatomic, strong) NSNumber * rangoMin;
 @property (nonatomic, strong) NSNumber * rangoMax;

@@ -204,7 +204,6 @@ const NSString *kNombreDependencia;
     NSArray *dataSelected = dicData[kKeyDatos];
     return dataSelected.count;
 }
-
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 
     NSDictionary *dicData = _datasource[section];
