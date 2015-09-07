@@ -53,7 +53,7 @@ NSString * const kServletConsultarInversiones       = @"inversiones";
 NSString * const kServletConsultarClasificacion     = @"clasificaciones";
 NSString * const kServletConsultarTipoObraPrograma  = @"tiposDeObra";
 NSString * const kServletConsultarDependencias      = @"dependencias";
-NSString * const kServletConsultarSubDependencias   = @"subdependenciasiPad";
+NSString * const kServletConsultarSubDependencias   = @"subdependencias";
 
 NSString * const kServletConsultarSubclasificacion  = @"clasificaciones";
 

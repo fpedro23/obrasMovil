@@ -490,13 +490,6 @@
     }];
     
     
-    [_jsonClient GET:kServletConsultarSubDependencias parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        _subdependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error.localizedDescription);
-    }];
     
     [_jsonClient GET:kServletConsultarInversiones parameters:@{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken]}  success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -1778,6 +1771,13 @@ const int numResultsPerPage = 200;
 {
     NSUInteger numAnnotations = mapClusterAnnotation.annotations.count;
     NSString *unit = numAnnotations > 1 ? @"obras" : @"obra";
+    
+    if(numAnnotations == 1){
+        NSString *title = [[mapClusterAnnotation.annotations.allObjects firstObject] valueForKey:@"title"];
+        return [NSString stringWithFormat:@"1 Obra - %@", title];
+
+    }
+    
     return [NSString stringWithFormat:@"%tu %@", numAnnotations, unit];
 }
 
@@ -1785,7 +1785,7 @@ const int numResultsPerPage = 200;
 {
     NSUInteger numAnnotations = MIN(mapClusterAnnotation.annotations.count, 5);
     NSArray *annotations = [mapClusterAnnotation.annotations.allObjects subarrayWithRange:NSMakeRange(0, numAnnotations)];
-    NSArray *titles = [annotations valueForKey:@"title"];
+    NSArray *titles = [annotations valueForKey:@"subtitle"];
     return [titles componentsJoinedByString:@", "];
 }
 
@@ -1809,8 +1809,8 @@ const int numResultsPerPage = 200;
         
         MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
         annotationPoint.coordinate = annotationCoord;
-        annotationPoint.title = reporte.denominacion;
-        annotationPoint.subtitle = [NSString stringWithFormat:@"Total Invertido: %@", [_currencyFormatter stringFromNumber:reporte.inversionTotal]];
+        annotationPoint.title = [NSString stringWithFormat:@"%@ - %@ MDP",  reporte.identificadorUnico, [_currencyFormatter stringFromNumber:reporte.inversionTotal]];
+        annotationPoint.subtitle = reporte.denominacion;
         
         [annotations addObject:annotationPoint];
         
@@ -1899,6 +1899,27 @@ const int numResultsPerPage = 200;
 }
 
 #pragma mark - PopupListTableView Delegate -Save Data
+
+//Pop de dependencias desaparecio
+
+-(void)selectSubDependencias{
+
+    NSArray *dependencyIDArray = [_dependenciesSavedData valueForKey:@"idDependencia"];
+    NSString *string = [dependencyIDArray componentsJoinedByString:@","];
+    NSLog(@"%@",string);
+    NSDictionary *parameters =   @{@"access_token" :[[AFOAuthCredential retrieveCredentialWithIdentifier:kStoreCredentialIdentifier] accessToken],
+                                   @"dependencia":string
+                                   };
+
+    [_jsonClient GET:kServletConsultarSubDependencias parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        _subdependencyData =[_jsonClient deserializeDependenciesFromJSON:responseObject];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+        _subdependencyData = nil;
+    }];
+}
 
 //Cuando el PopUp desaparece el delegado envia los datos seleccionados, posteriomente almacenamos los datos.
 

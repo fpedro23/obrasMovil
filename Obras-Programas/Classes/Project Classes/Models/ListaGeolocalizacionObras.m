@@ -20,6 +20,7 @@
              @"inversionTotal"  :@"inversionTotal",
              @"latitud"     :@"latitud",
              @"longitud"     :@"longitud",
+             @"identificadorUnico": @"identificador_unico",
              };
 }
 

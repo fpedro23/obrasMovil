@@ -12,6 +12,8 @@
 	<dict>
 		<key>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</key>
 		<string>https://github.com/choefele/CCHMapClusterController.git</string>
+		<key>5F04DC7D953347874BD89A8A70137D34F1FA213D</key>
+		<string>https://bitbucket.org/fpedro23/strv-weather-app.git</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>https://github.com/fpedro23/obrasMovil.git</string>
 	</dict>
@@ -21,6 +23,8 @@
 	<dict>
 		<key>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</key>
 		<string>../../Obras-Programas/Classes/External%20Classes/CCHMapClusterController</string>
+		<key>5F04DC7D953347874BD89A8A70137D34F1FA213D</key>
+		<string>../../../..</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>../..</string>
 	</dict>
@@ -32,6 +36,14 @@
 	<string>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5F04DC7D953347874BD89A8A70137D34F1FA213D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

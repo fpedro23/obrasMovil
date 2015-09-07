@@ -155,6 +155,12 @@ const NSInteger rowHeight = 45;
 
         }
     }
+    
+    if(_field == e_Dependencia){
+        if([_delegate respondsToSelector:@selector(selectSubDependencias)]){
+            [_delegate selectSubDependencias];
+        }
+    }
 }
 
 #pragma mark - Table view data source
@@ -166,8 +172,10 @@ const NSInteger rowHeight = 45;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+
     id objecModel = nil;
     NSString *value = @"";
+    
 
     if (_isMenu || _field == e_Sort_Result || _field == e_Tipo) {
         objecModel  = [self.dataSource objectAtIndex:indexPath.row];
@@ -416,6 +424,7 @@ const NSInteger rowHeight = 45;
             [_delegate popupListView:self dataForSingleSelectedRow:value];
         }
     }
+    
     NSLog(@"add %@", _dataSelected);
 }
 

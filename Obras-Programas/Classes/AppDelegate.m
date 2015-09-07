@@ -29,6 +29,8 @@
     
     [self setupHUD];
     
+
+    
     return YES;
 }
 
