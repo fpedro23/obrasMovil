@@ -24,7 +24,7 @@
 		<key>11AA031F7A1AE22A4EBCFF7DDB1C4990E185C0E4</key>
 		<string>../../Obras-Programas/Classes/External%20Classes/CCHMapClusterController</string>
 		<key>5F04DC7D953347874BD89A8A70137D34F1FA213D</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 		<key>A13F43566F718249EB2EBB47BFCC422AD9B03BE5</key>
 		<string>../..</string>
 	</dict>
@@ -42,7 +42,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>5F04DC7D953347874BD89A8A70137D34F1FA213D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
