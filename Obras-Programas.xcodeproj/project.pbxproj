@@ -40,7 +40,6 @@
 		AB02862D19F50ADF0053033A /* UIViewController+TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02862319F50ADF0053033A /* UIViewController+TargetViewController.m */; };
 		AB02863019F50B150053033A /* ConsultasGuardadasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB02862F19F50B150053033A /* ConsultasGuardadasTableViewController.m */; };
 		AB06728D1A074216004A53F1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB06728C1A074216004A53F1 /* WebViewController.m */; };
-		AB06728F1A07425B004A53F1 /* manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AB06728E1A07425B004A53F1 /* manual.pdf */; };
 		AB36C62319D6074500B77B83 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C60419D6074500B77B83 /* EXTRuntimeExtensions.m */; };
 		AB36C62419D6074500B77B83 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = AB36C60619D6074500B77B83 /* EXTScope.m */; };
 		AB36C62519D6074500B77B83 /* Mantle-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB36C60819D6074500B77B83 /* Mantle-Info.plist */; };
@@ -369,7 +368,6 @@
 		AB02862F19F50B150053033A /* ConsultasGuardadasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultasGuardadasTableViewController.m; sourceTree = "<group>"; };
 		AB06728B1A074216004A53F1 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		AB06728C1A074216004A53F1 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		AB06728E1A07425B004A53F1 /* manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = manual.pdf; sourceTree = "<group>"; };
 		AB36C60219D6074500B77B83 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		AB36C60319D6074500B77B83 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
 		AB36C60419D6074500B77B83 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
@@ -1813,7 +1811,6 @@
 		ABFCC4E119C2DDA10074CA01 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AB06728E1A07425B004A53F1 /* manual.pdf */,
 				ABFCC4E219C2DDA10074CA01 /* Data Base */,
 				ABFCC4E319C2DDA10074CA01 /* Images */,
 			);
@@ -2017,7 +2014,6 @@
 				AB36C62519D6074500B77B83 /* Mantle-Info.plist in Resources */,
 				ABAC4F2219E25F48002B15B5 /* MDSpreadViewColumnHeaderRight@2x.png in Resources */,
 				ABAC4F2B19E25F48002B15B5 /* MDSpreadViewCornerBottomRightSelected.png in Resources */,
-				AB06728F1A07425B004A53F1 /* manual.pdf in Resources */,
 				ABD3D70019EB9C690006BEA2 /* logoPresidencia.png in Resources */,
 				ABAC4F3719E25F48002B15B5 /* MDSpreadViewRowHeaderBottomSelected.png in Resources */,
 				ABAC4F2619E25F48002B15B5 /* MDSpreadViewCornerBottomLeft@2x.png in Resources */,

@@ -19,9 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"manual"
-                                                     ofType:@"pdf"];
-    NSURL *url = [NSURL fileURLWithPath:path];
+
+    NSURL *url = [NSURL URLWithString:@"https://obrasapf.mx/static/ios/manual.pdf"];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
